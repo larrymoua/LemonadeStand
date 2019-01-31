@@ -7,17 +7,13 @@ namespace LemonadeStand
 {
     public class Store
     {
+        private int lemons;
+        private int sugar;
+        private int ice;
+
         public Store()
         {
             throw new System.NotImplementedException();
-        }
-
-        public Inventory Inventory
-        {
-            get => default(Inventory);
-            set
-            {
-            }
         }
 
         public int LemonadePrice

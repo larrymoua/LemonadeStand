@@ -8,9 +8,9 @@ namespace LemonadeStand
 {
     class Program
     {
-        public UserInterface UserInterface
+        public Game Game
         {
-            get => default(UserInterface);
+            get => default(Game);
             set
             {
             }

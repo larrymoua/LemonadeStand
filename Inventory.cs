@@ -20,20 +20,17 @@ namespace LemonadeStand
             }
         }
 
-        public Customer Customer
-        {
-            get => default(Customer);
-            set
-            {
-            }
-        }
-
         public void UsePitches()
         {
             throw new System.NotImplementedException();
         }
 
         public void DisposePitches()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ViewInventory()
         {
             throw new System.NotImplementedException();
         }

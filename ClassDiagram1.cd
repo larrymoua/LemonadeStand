@@ -1,85 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="LemonadeStand.Game">
-    <Position X="1" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAIEAAAAAAAAAAAAAAAAQCAAAAAAAAAQgAQAAAAA=</HashCode>
+      <HashCode>EgEAAIEAIAAAAAAAAAAAAAAQCAAAAAAAAAQgAQAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Rules" />
       <Property Name="Player" />
+      <Property Name="Day" />
+      <Property Name="Store" />
+      <Property Name="UserInterface" />
+      <Property Name="Customer" />
     </ShowAsAssociation>
   </Class>
   <Class Name="LemonadeStand.Customer">
-    <Position X="8.75" Y="3.75" Width="1.5" />
+    <Position X="7" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Game" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="LemonadeStand.Weather">
-    <Position X="6.25" Y="3" Width="1.5" />
+    <Position X="6.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Weather.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Customer" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="LemonadeStand.Budget">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAA=</HashCode>
       <FileName>Budget.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Store" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="LemonadeStand.Store">
-    <Position X="7" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAAA=</HashCode>
-      <FileName>Store.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Inventory" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="LemonadeStand.Program" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.25" />
+  <Class Name="LemonadeStand.Store">
+    <Position X="6.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AABAgAEAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Store.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LemonadeStand.Program" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="UserInterface" />
+      <Property Name="Game" />
     </ShowAsAssociation>
   </Class>
   <Class Name="LemonadeStand.Rules">
-    <Position X="3.5" Y="5.5" Width="1.5" />
+    <Position X="4.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Rules.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LemonadeStand.Inventory">
-    <Position X="9" Y="1" Width="1.5" />
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAEAAAAAAAAAIAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAEAAAAAAAAAIAIAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Customer" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="LemonadeStand.Day">
-    <Position X="3.75" Y="3" Width="1.5" />
+    <Position X="2.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAQAAAAAAAAAAAQAAAAAAAAAAg=</HashCode>
       <FileName>Day.cs</FileName>
@@ -89,7 +81,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="LemonadeStand.Player">
-    <Position X="2.75" Y="1.25" Width="1.5" />
+    <Position X="2.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>Player.cs</FileName>
@@ -99,14 +91,11 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="LemonadeStand.UserInterface">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAACAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>UserInterface.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Game" />
-    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

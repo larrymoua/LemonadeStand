@@ -14,14 +14,6 @@ namespace LemonadeStand
             throw new System.NotImplementedException();
         }
 
-        public Game Game
-        {
-            get => default(Game);
-            set
-            {
-            }
-        }
-
         public void BuyLemonade()
         {
             throw new System.NotImplementedException();

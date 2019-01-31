@@ -12,14 +12,6 @@ namespace LemonadeStand
             throw new System.NotImplementedException();
         }
 
-        public Customer Customer
-        {
-            get => default(Customer);
-            set
-            {
-            }
-        }
-
         public int ForeCast
         {
             get => default(int);

@@ -35,6 +35,39 @@ namespace LemonadeStand
             {
             }
         }
+
+        public Day Day
+        {
+            get => default(Day);
+            set
+            {
+            }
+        }
+
+        public Store Store
+        {
+            get => default(Store);
+            set
+            {
+            }
+        }
+
+        public UserInterface UserInterface
+        {
+            get => default(UserInterface);
+            set
+            {
+            }
+        }
+
+        public Customer Customer
+        {
+            get => default(Customer);
+            set
+            {
+            }
+        }
+
         public void MainMenu()
         {
             string chooseDifficulty;

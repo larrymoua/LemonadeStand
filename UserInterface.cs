@@ -7,12 +7,19 @@ namespace LemonadeStand
 {
     public class UserInterface
     {
-        public Game Game
+        public void Background()
         {
-            get => default(Game);
-            set
-            {
-            }
+            throw new System.NotImplementedException();
+        }
+
+        public void CoverScreen()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RunUserInterface()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

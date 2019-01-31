@@ -12,20 +12,25 @@ namespace LemonadeStand
             throw new System.NotImplementedException();
         }
 
-        public Store Store
-        {
-            get => default(Store);
-            set
-            {
-            }
-        }
-
         public int TotalMoney
         {
             get => default(int);
             set
             {
             }
+        }
+
+        public Inventory Inventory
+        {
+            get => default(Inventory);
+            set
+            {
+            }
+        }
+
+        public void DisplayBudget()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
