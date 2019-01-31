@@ -5,9 +5,9 @@ using System.Text;
 
 namespace LemonadeStand
 {
-    public class Player
+    public class Business
     {
-        public Player()
+        public Business()
         {
             throw new System.NotImplementedException();
         }

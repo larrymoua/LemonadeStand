@@ -7,9 +7,9 @@ namespace LemonadeStand
 {
     public class Store
     {
-        private int lemons;
-        private int sugar;
-        private int ice;
+        private int lemonsPrice;
+        private int sugarPrice;
+        private int icePrice;
 
         public Store()
         {

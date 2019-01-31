@@ -21,5 +21,10 @@ namespace LemonadeStand
         {
             throw new System.NotImplementedException();
         }
+
+        public void DisplayRules()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

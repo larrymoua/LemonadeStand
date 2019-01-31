@@ -7,6 +7,10 @@ namespace LemonadeStand
 {
     public class Inventory
     {
+        private int myIce;
+        private int myLemons;
+        private int mySugar;
+
         public Inventory()
         {
             throw new System.NotImplementedException();

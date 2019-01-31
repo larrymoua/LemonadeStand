@@ -20,9 +20,9 @@ namespace LemonadeStand
             }
         }
 
-        public Player Player
+        public Business Player
         {
-            get => default(Player);
+            get => default(Business);
             set
             {
             }
