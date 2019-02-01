@@ -12,9 +12,5 @@ namespace LemonadeStand
      
         }
 
-        public void BuyLemonade()
-        {
-            
-        }
     }//end class
 }//end namespace

@@ -13,10 +13,13 @@ namespace LemonadeStand
         public Store store { get; set; }
         public Business businessOne { get; set; }
         public List<Day> days = new List<Day>();
+        public List<Customer> customerList { get; set; }
+        double TotalProfit;
 
         public Game()
         {
             businessOne = new Business();
+            customerList = new List<Customer>();
 
         }//end constructor
         public void CreateDays()
@@ -25,82 +28,110 @@ namespace LemonadeStand
 
             for (int i = 0; i < x; i++)
             {
-<<<<<<< HEAD
                 day = new Day();
                 days.Add(day);
             }
+
+            if (day.weather.newForecast == "sunny" || day.weather.newForecast == "cloudy" && day.weather.temperatureOfTheDay > 25)
+            {
+                Customer customerOne = new Customer();
+                customerList.Add(customerOne);
+                Customer customerTwo = new Customer();
+                customerList.Add(customerTwo);
+                Customer customerThree = new Customer();
+                customerList.Add(customerThree);
+                Customer customerFour = new Customer();
+                customerList.Add(customerFour);
+                Customer customerFive = new Customer();
+                customerList.Add(customerFive);
+                Customer customerSix = new Customer();
+                customerList.Add(customerSix);
+                Customer customerSeven = new Customer();
+                customerList.Add(customerSeven);
+                Customer customerEight = new Customer();
+                customerList.Add(customerEight);
+                Customer customerNine = new Customer();
+                customerList.Add(customerNine);
+                Customer customerTen = new Customer();
+                customerList.Add(customerTen);
+
+            }
+            else if (day.weather.newForecast == "cloudy" || day.weather.newForecast == "sunny" && day.weather.temperatureOfTheDay > 15)
+            {
+                Customer customerOne = new Customer();
+                customerList.Add(customerOne);
+                Customer customerTwo = new Customer();
+                customerList.Add(customerTwo);
+                Customer customerThree = new Customer();
+                customerList.Add(customerThree);
+                Customer customerFour = new Customer();
+                customerList.Add(customerFour);
+                Customer customerFive = new Customer();
+                customerList.Add(customerFive);
+                Customer customerSix = new Customer();
+                customerList.Add(customerSix);
+            }
+            else if (day.weather.newForecast == "rainy")
+            {
+                Customer customerOne = new Customer();
+                customerList.Add(customerOne);
+                Customer customerTwo = new Customer();
+                customerList.Add(customerTwo);
+                Customer customerThree = new Customer();
+                customerList.Add(customerThree);
+            }
+
+
+
 
         }
         public void GetBusinessName()
         {
             businessOne.Name =  UserInterface.SetName();
         }
-=======
-                days.Add(day);
-            }
-        }
-        public void GetBusinessName()
-        {
-            businessOne.Name =  UserInterface.SetName();
-        }
->>>>>>> f5ae285830bcf7872300f199ca27bcadc0858d64
         public void PurchaseLemonade()
         {
           double AmountOfPitchersBuying =  UserInterface.PurchaseLemonade(businessOne);
           double CostperPitcher = (Store.icePrice * 5) + (Store.lemonsPrice * 3) + (Store.sugarPrice * 2);
           businessOne.Budget.cash = businessOne.Budget.cash - (CostperPitcher * AmountOfPitchersBuying);
-<<<<<<< HEAD
           businessOne.Inventory.pitchersYouHave = AmountOfPitchersBuying;
           double cupsOfLemonadeYouHave = (businessOne.Inventory.pitchersYouHave * 5);
           Console.Clear();
           Console.WriteLine($"You have {businessOne.Inventory.pitchersYouHave} ({cupsOfLemonadeYouHave} cups) pitchers in your inventory..");
           Console.WriteLine($"Bank Account : $ {businessOne.Budget.cash} ");
 
-=======
-           
->>>>>>> f5ae285830bcf7872300f199ca27bcadc0858d64
         }//end PurchaseLemonade
         public void ContinueOrRetire()
         {
             throw new System.NotImplementedException();
         }
-<<<<<<< HEAD
-        public void ChooseBusinessSellPrice(Day day)
-        {
-            pricePerCup = UserInterface.ChooseSellPrice();
-            for (int i = 0; i < day.customerList.Count; i++)
-            {
-                Customer customer = day.customerList[i];
-=======
         public void ChooseBusinessSellPrice()
         {
             pricePerCup = UserInterface.ChooseSellPrice();
-            foreach (Customer customer in day.customerList)
-            {
->>>>>>> f5ae285830bcf7872300f199ca27bcadc0858d64
-                businessOne.Budget.cash = pricePerCup + businessOne.Budget.cash;
-            }
 
         }//end ChooseBusinessSellPrice
+        public void SellLemonade()
+        {
+           TotalProfit = pricePerCup * customerList.Count;
+            businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
+        }
         public void RunGame()
         {
             UserInterface.RunUserInterface();
             GetBusinessName();
             CreateDays();
-<<<<<<< HEAD
 
             for (int i = 0; i < days.Count; ++i)
             {
+                Console.WriteLine($"\n\t\t\t\tDay : {i+1}");
                 UserInterface.DisplayWeather(days[i]);
                 PurchaseLemonade();
-                ChooseBusinessSellPrice(days[i]);
+                ChooseBusinessSellPrice();
+                SellLemonade();
+                UserInterface.DisplayProfits(businessOne,TotalProfit);
                 
             }
           
-=======
-            PurchaseLemonade();
-            ChooseBusinessSellPrice();
->>>>>>> f5ae285830bcf7872300f199ca27bcadc0858d64
-        }
+        }//end RunGame
     }//end class
 }//end namespace

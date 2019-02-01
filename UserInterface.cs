@@ -36,9 +36,17 @@ namespace LemonadeStand
         }
         public static string SetName()
         {
-            string name;
+            string name = "";
             Console.WriteLine("What do you want to name your business?");
-            name = Console.ReadLine();
+            try
+            {
+                name = Console.ReadLine();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("INVALID INPUT! PLEASE TRY AGAIN");
+                SetName();
+            }
             Console.WriteLine($"Congradulations {name}, you are now open for business!");
             Console.ReadLine();
             return name;
@@ -62,26 +70,22 @@ namespace LemonadeStand
             double result;
 
             Console.WriteLine("\nLets Head to the store...");
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             Console.WriteLine($"Lemons cost : $ {Store.lemonsPrice} \tSugarCubes cost : $ {Store.sugarPrice} \tIce Cube : $ {Store.icePrice}");
             Console.WriteLine("\nRecipe(1 pitcher = 5 cups) = Lemons : 3  SugarCubes : 2  Ice Cubes : 5 ");
 
             Console.WriteLine($"\nBank Account : {business.Budget.cash} $");
 
-            Console.WriteLine("\n\nDid you want make a purchase? y/n");
-            yesOrNo = Console.ReadLine().ToLower();
-            if (yesOrNo == "y")
-            {
-                Console.WriteLine("\nHow many pitches do you want to purchase?");
-              
-            }
-            else if ( yesOrNo == "n")
-            {
+            Console.WriteLine("\nHow many pitchers do you want to purchase?");
 
-            }
+       
             result = Convert.ToDouble(Console.ReadLine());
             return result;
 
+        }
+        public static void DisplayProfits(Business business, double TotalProfits)
+        {
+            Console.WriteLine($"\n Profit : ${TotalProfits} Business Budget : ${business.Budget.cash}");
         }
         public static void DisplayWeather(Day day)
         {
