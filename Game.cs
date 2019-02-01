@@ -32,7 +32,7 @@ namespace LemonadeStand
         {
             businessOne.Name =  UserInterface.SetName();
         }
-        public void PurchaseLemonade(Business businessOne)
+        public void PurchaseLemonade()
         {
           double AmountOfPitchersBuying =  UserInterface.PurchaseLemonade(businessOne);
           double CostperPitcher = (Store.icePrice * 5) + (Store.lemonsPrice * 3) + (Store.sugarPrice * 2);
@@ -43,7 +43,7 @@ namespace LemonadeStand
         {
             throw new System.NotImplementedException();
         }
-        public void ChooseBusinessSellPrice(Business businessOne)
+        public void ChooseBusinessSellPrice()
         {
             pricePerCup = UserInterface.ChooseSellPrice();
             foreach (Customer customer in day.customerList)
@@ -51,12 +51,14 @@ namespace LemonadeStand
                 businessOne.Budget.cash = pricePerCup + businessOne.Budget.cash;
             }
 
-        }
+        }//end ChooseBusinessSellPrice
         public void RunGame()
         {
             UserInterface.RunUserInterface();
             GetBusinessName();
             CreateDays();
+            PurchaseLemonade();
+            ChooseBusinessSellPrice();
         }
     }//end class
 }//end namespace

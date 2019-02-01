@@ -15,6 +15,7 @@ namespace LemonadeStand
 
         public Business()
         {
+            Budget = new Budget();
 
         }//end constructor
     }//end class

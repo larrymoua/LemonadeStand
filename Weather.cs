@@ -23,9 +23,9 @@ namespace LemonadeStand
 
         }//end Constructor
         
-        public void DisplayWeather(double temp, string forecast)
+        public void DisplayWeather()
         {
-            Console.WriteLine($"The forecast today is {temp} degrees and {forecast}!");
+            Console.WriteLine($"The forecast today is {temperatureOfTheDay} degrees and {newForecast}!");
         }//end DisplayWeather
 
         public void NewWeather()
@@ -36,7 +36,6 @@ namespace LemonadeStand
             randomWeatherIndex = rnd.Next(listOfForecast.Count);
 
             newForecast = listOfForecast[randomWeatherIndex];
-            DisplayWeather(temperatureOfTheDay, newForecast);
             
         }//end NewWeather
     }//end class

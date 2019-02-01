@@ -15,8 +15,9 @@ namespace LemonadeStand
         public Day()
         {
             weather = new Weather();
+            weather.DisplayWeather();
 
-            if(weather.newForecast == "sunny" &&  weather.temperatureOfTheDay > 25)
+            if (weather.newForecast == "sunny" &&  weather.temperatureOfTheDay > 25)
             {
                 Customer customerOne = new Customer();
                 Customer customerTwo = new Customer();
@@ -38,13 +39,14 @@ namespace LemonadeStand
                 Customer customerFive = new Customer();
                 Customer customerSix = new Customer();
             }
-            else
+            else if (weather.newForecast == "rainy" && weather.temperatureOfTheDay > 5)
             {
                 Customer customerOne = new Customer();
                 Customer customerTwo = new Customer();
                 Customer customerThree = new Customer();
             }
-        }
+            weather.DisplayWeather();
+        }//end constructor
 
         public void DisplayDay()
         {
