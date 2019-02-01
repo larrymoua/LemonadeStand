@@ -7,25 +7,11 @@ namespace LemonadeStand
 {
     public class Budget
     {
+        public double cash;
+
         public Budget()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Store Store
-        {
-            get => default(Store);
-            set
-            {
-            }
-        }
-
-        public int TotalMoney
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-    }
-}
+            cash = 10;
+        }//end constructor
+    }//end class
+}//namespace

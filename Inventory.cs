@@ -7,27 +7,12 @@ namespace LemonadeStand
 {
     public class Inventory
     {
+        public double pitchersYouHave;
+
         public Inventory()
         {
-            throw new System.NotImplementedException();
+            
         }
-
-        public int Pitchers
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-
-        public Customer Customer
-        {
-            get => default(Customer);
-            set
-            {
-            }
-        }
-
         public void UsePitches()
         {
             throw new System.NotImplementedException();
@@ -37,5 +22,5 @@ namespace LemonadeStand
         {
             throw new System.NotImplementedException();
         }
-    }
-}
+    }//end NameSpace
+}//end class

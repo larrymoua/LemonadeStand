@@ -2,83 +2,63 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace LemonadeStand
 {
     public class Game
     {
+        public double pricePerCup;
+        public Day day { get; set; }
+        public Store store { get; set; }
+        public Business businessOne { get; set; }
+        public List<Day> days = new List<Day>();
+
         public Game()
         {
-            throw new System.NotImplementedException();
-        }
+            businessOne = new Business();
 
-        public Rules Rules
+        }//end constructor
+        public void CreateDays()
         {
-            get => default(Rules);
-            set
+            int x = UserInterface.GetDays();
+
+            for (int i = 0; i < x; i++)
             {
+                days.Add(day);
             }
         }
-
-        public Player Player
+        public void GetBusinessName()
         {
-            get => default(Player);
-            set
-            {
-            }
+            businessOne.Name =  UserInterface.SetName();
         }
-
-        public int playerOne
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-        public void MainMenu()
-        {
-            string chooseDifficulty;
-
-           Console.WriteLine("1. EASY\n2. MEDIUM\n.3 HARD");
-           chooseDifficulty =  Console.ReadLine();
-
-            switch (chooseDifficulty)
-            {
-                case "1":
-
-                    break;
-                case "2":
-
-                    break;
-                case "3":
-
-                    break;
-                default:
-                    MainMenu();
-                    break;           
-            }//end switchcase
-
-        }//end MainMenu
-
-
-        public void ChooseSellPrice()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void PurchaseLemonade()
         {
-            throw new System.NotImplementedException();
-        }
-
+          double AmountOfPitchersBuying =  UserInterface.PurchaseLemonade(businessOne);
+          double CostperPitcher = (Store.icePrice * 5) + (Store.lemonsPrice * 3) + (Store.sugarPrice * 2);
+          businessOne.Budget.cash = businessOne.Budget.cash - (CostperPitcher * AmountOfPitchersBuying);
+           
+        }//end PurchaseLemonade
         public void ContinueOrRetire()
         {
             throw new System.NotImplementedException();
         }
+        public void ChooseBusinessSellPrice()
+        {
+            pricePerCup = UserInterface.ChooseSellPrice();
+            foreach (Customer customer in day.customerList)
+            {
+                businessOne.Budget.cash = pricePerCup + businessOne.Budget.cash;
+            }
 
+        }//end ChooseBusinessSellPrice
         public void RunGame()
         {
-            throw new System.NotImplementedException();
+            UserInterface.RunUserInterface();
+            GetBusinessName();
+            CreateDays();
+            PurchaseLemonade();
+            ChooseBusinessSellPrice();
         }
     }//end class
 }//end namespace

@@ -7,35 +7,36 @@ namespace LemonadeStand
 {
     public class Weather
     {
+        public int minTemperature;
+        public int maxTemperature;
+        List<string> listOfForecast = new List<string>() {"rainy" , "sunny", "cloudy" };
+        Random rnd;
+        public string newForecast;
+        public double temperatureOfTheDay;
+
         public Weather()
         {
-            throw new System.NotImplementedException();
-        }
+          minTemperature = 0;
+          maxTemperature = 35;
+          rnd = new Random();
+          NewWeather();
 
-        public Customer Customer
-        {
-            get => default(Customer);
-            set
-            {
-            }
-        }
-
-        public int ForeCast
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-
+        }//end Constructor
+        
         public void DisplayWeather()
         {
-            throw new System.NotImplementedException();
-        }
+            Console.WriteLine($"The forecast today is {temperatureOfTheDay} degrees and {newForecast}!");
+        }//end DisplayWeather
 
         public void NewWeather()
         {
-            throw new System.NotImplementedException();
-        }
-    }
-}
+            int randomWeatherIndex;
+
+            temperatureOfTheDay = rnd.Next( minTemperature, maxTemperature);
+            randomWeatherIndex = rnd.Next(listOfForecast.Count);
+
+            newForecast = listOfForecast[randomWeatherIndex];
+            
+        }//end NewWeather
+    }//end class
+}//end namespace
