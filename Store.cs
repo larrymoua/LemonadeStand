@@ -7,26 +7,16 @@ namespace LemonadeStand
 {
     public class Store
     {
-        private int lemonsPrice;
-        private int sugarPrice;
-        private int icePrice;
+        public static double lemonsPrice;
+        public static double sugarPrice;
+        public static double icePrice;
 
-        public Store()
+        static Store()
         {
-            throw new System.NotImplementedException();
-        }
+            lemonsPrice = .50;
+            icePrice = .10;
+            sugarPrice = .10;
 
-        public int LemonadePrice
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-
-        public void PurchaseLemonade()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-}
+        }//end constructor
+    }//end class
+}//end namespace

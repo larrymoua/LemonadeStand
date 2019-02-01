@@ -7,18 +7,42 @@ namespace LemonadeStand
 {
     public class Day
     {
-        private int whatDay;
+        public List<string> daysOfBusiness = new List<string>() { };
+        public Weather weather { get; set; }
+        public List<Customer> customerList { get; set; }
+
 
         public Day()
         {
-            throw new System.NotImplementedException();
-        }
+            weather = new Weather();
 
-        public Weather Weather
-        {
-            get => default(Weather);
-            set
+            if(weather.newForecast == "sunny" &&  weather.temperatureOfTheDay > 25)
             {
+                Customer customerOne = new Customer();
+                Customer customerTwo = new Customer();
+                Customer customerThree = new Customer();
+                Customer customerFour = new Customer();
+                Customer customerFive = new Customer();
+                Customer customerSix = new Customer();
+                Customer customerSeven = new Customer();
+                Customer customerEight = new Customer();
+                Customer customerNine = new Customer();
+                Customer customerTen = new Customer();
+            }
+            else if(weather.newForecast == "cloudy" && weather.temperatureOfTheDay > 15)
+            {
+                Customer customerOne = new Customer();
+                Customer customerTwo = new Customer();
+                Customer customerThree = new Customer();
+                Customer customerFour = new Customer();
+                Customer customerFive = new Customer();
+                Customer customerSix = new Customer();
+            }
+            else
+            {
+                Customer customerOne = new Customer();
+                Customer customerTwo = new Customer();
+                Customer customerThree = new Customer();
             }
         }
 
@@ -27,9 +51,5 @@ namespace LemonadeStand
             throw new System.NotImplementedException();
         }
 
-        public void NewDay()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

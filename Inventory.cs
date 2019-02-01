@@ -7,23 +7,12 @@ namespace LemonadeStand
 {
     public class Inventory
     {
-        private int myIce;
-        private int myLemons;
-        private int mySugar;
+        public double pitchersYouHave;
 
         public Inventory()
         {
-            throw new System.NotImplementedException();
+            
         }
-
-        public int Pitchers
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
-
         public void UsePitches()
         {
             throw new System.NotImplementedException();
@@ -33,10 +22,5 @@ namespace LemonadeStand
         {
             throw new System.NotImplementedException();
         }
-
-        public void ViewInventory()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-}
+    }//end NameSpace
+}//end class
