@@ -22,13 +22,8 @@ namespace LemonadeStand
           NewWeather();
 
         }//end Constructor
-        
-        public void DisplayWeather()
-        {
-            Console.WriteLine($"The forecast today is {temperatureOfTheDay} degrees and {newForecast}!");
-        }//end DisplayWeather
-
         public void NewWeather()
+
         {
             int randomWeatherIndex;
 

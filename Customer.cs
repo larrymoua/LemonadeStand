@@ -16,5 +16,5 @@ namespace LemonadeStand
         {
             
         }
-    }
-}
+    }//end class
+}//end namespace

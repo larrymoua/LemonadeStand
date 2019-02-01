@@ -16,7 +16,7 @@ namespace LemonadeStand
         public Business()
         {
             Budget = new Budget();
-
+            Inventory = new Inventory();
         }//end constructor
     }//end class
 }//end namespace
