@@ -18,7 +18,7 @@ namespace LemonadeStand
         }
         static void Background()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+          Console.ForegroundColor = ConsoleColor.Yellow;
 
         }
 
@@ -29,14 +29,16 @@ namespace LemonadeStand
         static void DisplayRules()
         {
             Console.WriteLine("\t\t\t\t\tLemonade Stand Rules");
-            Console.WriteLine("\n\n\tRun a lemonade stand for 7 days and know weather could affective your business. You will have a budget of 10$ to purchase pitchers(5 cups) of lemonade to sell. Also you will have the option of selling cups of lemonade for your own price. Goodluck and lets come out with a profit!");
+            Console.WriteLine("\nRun a lemonade stand for 7 days and know weather could affective your business. You will have a budget of 10 $ to purchase pitchers(5 cups) of lemonade to sell. Also you will have the option of selling cups of lemonade for your own price. Goodluck and lets come out with a profit!");
+            Console.WriteLine("\n\n Press enter to continue...");
             Console.ReadLine();
+            Console.Clear();
         }
         public static string SetName()
         {
             string name;
             Console.WriteLine("What do you want to name your business?");
-            name  = Console.ReadLine();
+            name = Console.ReadLine();
             Console.WriteLine($"Congradulations {name}, you are now open for business!");
             Console.ReadLine();
             return name;
@@ -56,23 +58,24 @@ namespace LemonadeStand
         }
         public static double PurchaseLemonade(Business business)
         {
-            string yN;
+            string yesOrNo;
             double result;
-            Console.WriteLine("Lets Head to the store...");
-            Thread.Sleep(2000);
-            Console.WriteLine($"Lemons cost : {Store.lemonsPrice} \tSugarCubes cost : {Store.sugarPrice} \tIce Cube : {Store.icePrice}");
-            Console.WriteLine("\nRecipe( 1 pitcher) = Lemons : 3  SugarCubes : 2  Ice Cubes : 5 ");
 
-            Console.WriteLine($"\nBank Account : {business.Budget.cash}$");
+            Console.WriteLine("\nLets Head to the store...");
+            Thread.Sleep(2000);
+            Console.WriteLine($"Lemons cost : $ {Store.lemonsPrice} \tSugarCubes cost : $ {Store.sugarPrice} \tIce Cube : $ {Store.icePrice}");
+            Console.WriteLine("\nRecipe(1 pitcher = 5 cups) = Lemons : 3  SugarCubes : 2  Ice Cubes : 5 ");
+
+            Console.WriteLine($"\nBank Account : {business.Budget.cash} $");
 
             Console.WriteLine("\n\nDid you want make a purchase? y/n");
-            yN = Console.ReadLine().ToLower();
-            if (yN == "y")
+            yesOrNo = Console.ReadLine().ToLower();
+            if (yesOrNo == "y")
             {
                 Console.WriteLine("\nHow many pitches do you want to purchase?");
               
             }
-            else if ( yN == "n")
+            else if ( yesOrNo == "n")
             {
 
             }
@@ -80,28 +83,9 @@ namespace LemonadeStand
             return result;
 
         }
-        static void MainMenu()
+        public static void DisplayWeather(Day day)
         {
-            string chooseDifficulty;
-
-            Console.WriteLine("1. EASY\n2. MEDIUM\n3. HARD");
-            chooseDifficulty = Console.ReadLine();
-
-            switch (chooseDifficulty)
-            {
-                case "1":
-               
-                    break;
-                case "2":
-
-                    break;
-                case "3":
-
-                    break;
-                default:
-                    MainMenu();
-                    break;
-            }//end switchcase
-        }//end MainMenu
+            Console.WriteLine($"\nThe forecast today is {day.weather.temperatureOfTheDay} degrees and {day.weather.newForecast}!");
+        }//end DisplayWeather
     }//end class
 }//end NamesSpace
