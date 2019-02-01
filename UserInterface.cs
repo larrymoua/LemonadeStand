@@ -24,7 +24,15 @@ namespace LemonadeStand
 
         static void CoverScreen()
         {
-            
+           
+            Console.WriteLine(@" __    _____    __    __   _____   __  __");
+            Console.WriteLine(@"| |    | ___|  |  \  /  | / _ _ \ |  \ | |");
+            Console.WriteLine(@"| |    | L_    |   \/   | | | | | |   \| |");
+            Console.WriteLine(@"| |    | __|   |_|\   |_| | | | | |      |");
+            Console.WriteLine(@"| |___ | |___  | | \_/| | | |_| | | |\   |");
+            Console.WriteLine(@"L_____||_____| |_|    |_|  \____/ |_| \__|");
+            Console.ReadLine();
+
         }
         static void DisplayRules()
         {
@@ -60,13 +68,22 @@ namespace LemonadeStand
         }
         public static int GetDays()
         {
+            int result = 0;
+            
             Console.WriteLine("How many days do you want to run your business?");
-            int result = Convert.ToInt16(Console.ReadLine());
+            try
+            {
+                 result = Convert.ToInt16(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("INVALID INPUT, TRY AGAIN.");
+                GetDays();
+            }
             return result; 
         }
         public static double PurchaseLemonade(Business business)
         {
-            string yesOrNo;
             double result;
 
             Console.WriteLine("\nLets Head to the store...");
@@ -74,7 +91,7 @@ namespace LemonadeStand
             Console.WriteLine($"Lemons cost : $ {Store.lemonsPrice} \tSugarCubes cost : $ {Store.sugarPrice} \tIce Cube : $ {Store.icePrice}");
             Console.WriteLine("\nRecipe(1 pitcher = 5 cups) = Lemons : 3  SugarCubes : 2  Ice Cubes : 5 ");
 
-            Console.WriteLine($"\nBank Account : {business.Budget.cash} $");
+            Console.WriteLine($"\nBusiness Budget : {business.Budget.cash} $");
 
             Console.WriteLine("\nHow many pitchers do you want to purchase?");
 
