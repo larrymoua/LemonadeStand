@@ -112,7 +112,25 @@ namespace LemonadeStand
         }//end ChooseBusinessSellPrice
         public void SellLemonade()
         {
-           TotalProfit = pricePerCup * customerList.Count;
+            int happyMoodMuiltiplier = 2;
+           
+            for(int i = 0; i < customerList.Count; ++i)
+            {
+                if (customerList[i].mood == "sad")
+                {
+                    return;
+                }
+                else if (customerList[i].mood == "happy")
+                {
+                    TotalProfit =+ pricePerCup * happyMoodMuiltiplier;
+                }
+                else if (customerList[i].mood == "normal")
+                {
+                    TotalProfit =+ pricePerCup;
+                }
+
+            }//end for loop
+        
             businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
         }
         public void RunGame()
@@ -130,8 +148,7 @@ namespace LemonadeStand
                 SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
                 
-            }
-          
+            }         
         }//end RunGame
     }//end class
 }//end namespace

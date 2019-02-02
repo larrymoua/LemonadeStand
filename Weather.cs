@@ -26,7 +26,6 @@ namespace LemonadeStand
 
         {
             int randomWeatherIndex;
-
             temperatureOfTheDay = rnd.Next( minTemperature, maxTemperature);
             randomWeatherIndex = rnd.Next(listOfForecast.Count);
             newForecast = listOfForecast[randomWeatherIndex];
