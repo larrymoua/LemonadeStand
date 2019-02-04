@@ -8,7 +8,12 @@ namespace LemonadeStand
 {
     class LemonadeRecipe
     {
+        public int[,] AllRecipes;
         public LemonadeRecipe()
+        {
+            AllRecipes = new int[2,3] { { 2, 4, 3 }, { 2, 1, 3 } };
+        }
+        public void SweetRecipe()
         {
 
         }

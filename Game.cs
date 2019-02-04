@@ -80,10 +80,6 @@ namespace LemonadeStand
                 Customer customerThree = new Customer(rnd);
                 customerList.Add(customerThree);
             }
-
-
-
-
         }
         public void GetBusinessName()
         {
@@ -91,16 +87,27 @@ namespace LemonadeStand
         }
         public void PurchaseLemonade()
         {
-          double AmountOfPitchersBuying =  UserInterface.PurchaseLemonade(businessOne);
+          double AmountOfPitchersBuying =  UserInterface.DisplayStorePricesNBudget(businessOne);
           double CostperPitcher = (Store.icePrice * 5) + (Store.lemonsPrice * 3) + (Store.sugarPrice * 2);
           businessOne.Budget.cash = businessOne.Budget.cash - (CostperPitcher * AmountOfPitchersBuying);
           businessOne.Inventory.pitchersYouHave = AmountOfPitchersBuying;
           double cupsOfLemonadeYouHave = (businessOne.Inventory.pitchersYouHave * 5);
           Console.Clear();
-          Console.WriteLine($"You have {businessOne.Inventory.pitchersYouHave} ({cupsOfLemonadeYouHave} cups) pitchers in your inventory..");
-          Console.WriteLine($"Bank Account : $ {businessOne.Budget.cash} ");
 
         }//end PurchaseLemonade
+        public void PurchaesIngredients(Business business)
+        {
+           double userBuyLemonsQuanity = UserInterface.buyLemons();
+           double userBuySugarQuanity = UserInterface.buySugar();
+           double userBuyIceQuanity = UserInterface.buyIce();
+
+           double totalPriceOfLemonsBought = userBuyLemonsQuanity * Store.lemonsPrice;
+           double totalPriceOfSugarBought = userBuySugarQuanity * Store.sugarPrice;
+           double totalPriceOfIceBought = userBuyIceQuanity * Store.icePrice;
+           business.Budget.cash -= totalPriceOfIceBought + totalPriceOfLemonsBought + totalPriceOfSugarBought;
+
+
+        }//end PurchaesIngredients
         public void ContinueOrRetire()
         {
             string UserChoiceRetireOrContinue = UserInterface.OptionsToContinueOrRetire();
@@ -160,6 +167,7 @@ namespace LemonadeStand
                 Console.WriteLine($"\n\t\t\t\tDay : {i+1}");
                 UserInterface.DisplayWeather(days[i]);
                 PurchaseLemonade();
+                PurchaesIngredients(businessOne);
                 ChooseBusinessSellPrice();
                 SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);

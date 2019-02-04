@@ -93,9 +93,8 @@ namespace LemonadeStand
             }
             return result; 
         }
-        public static double PurchaseLemonade(Business business)
+        public static void DisplayStorePricesNBudget(Business business)
         {
-            double result = 0;
 
             Console.WriteLine("\nLets Head to the store...");
             Thread.Sleep(1000);
@@ -104,20 +103,39 @@ namespace LemonadeStand
 
             Console.WriteLine($"\nBusiness Budget : {business.Budget.cash} $");
 
-            Console.WriteLine("\nHow many pitchers do you want to purchase?");
+        }
+        public static void DisplayInventory(Business business)
+        {
+            Console.WriteLine($"You have {business.Inventory.pitchersYouHave} pitchers in your inventory..");
+            Console.WriteLine($"Lemons : {business.Inventory.lemonsInInventory} \t Sugar : {business.Inventory.sugarInInventory} \t Ice : {businessOne.Inventory.iceInInventory}");
+            Console.WriteLine($"Bank Account : $ {business.Budget.cash} ");
+        }
+        public static double buyLemons()
+        {
+            double result = 0;
 
-            try
-            {
-                result = Convert.ToDouble(Console.ReadLine());
-            }
-            catch(Exception)
-            {
-                Console.WriteLine("\nINVALID INPUT, TRY AGAIN.");
-                PurchaseLemonade(business);
-            }
-            
+            Console.WriteLine("Enter Lemons : ");
+            result = Convert.ToDouble(Console.ReadLine());
+
             return result;
+        }
+        public static double buyIce()
+        {
+            double result = 0;
 
+            Console.WriteLine("Enter Sugar : ");
+            result = Convert.ToDouble(Console.ReadLine());
+
+            return result;
+        }
+        public static double buySugar()
+        {
+            double result = 0;
+
+            Console.WriteLine("Enter Ice : ");
+            result = Convert.ToDouble(Console.ReadLine());
+
+            return result;
         }
         public static void DisplayProfits(Business business, double TotalProfits)
         {
