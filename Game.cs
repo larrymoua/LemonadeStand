@@ -15,16 +15,18 @@ namespace LemonadeStand
         public List<Day> days = new List<Day>();
         public List<Customer> customerList { get; set; }
         double TotalProfit;
+        Random rnd;
 
         public Game()
         {
             businessOne = new Business();
             customerList = new List<Customer>();
+            Random rnd = new Random();
 
         }//end constructor
         public void CreateDays()
         {
-            Random rnd = new Random();
+            
             double  amountOfDaysRunBusiness = UserInterface.GetDouble("How many days do you want to run your business ? ");
             for (int i = 0; i < amountOfDaysRunBusiness; i++)
             {
@@ -136,6 +138,11 @@ namespace LemonadeStand
             if(pricePerCup > 1)
             {
                 customerList.RemoveAt(0);
+            }
+            else if ( pricePerCup < 1)
+            {
+                Customer bonusCustomerGoodPrice = new Customer(rnd);
+                customerList.Add(bonusCustomerGoodPrice);
             }
 
             int happyMoodMuiltiplier = 2;
