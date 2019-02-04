@@ -10,9 +10,9 @@ namespace LemonadeStand
         public List<string> daysOfBusiness = new List<string>() { };
         public Weather weather { get; set; }
   
-        public Day()
+        public Day(Random rnd)
         {
-            weather = new Weather();
+            weather = new Weather(rnd);
 
         }//end constructor
 

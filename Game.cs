@@ -25,59 +25,59 @@ namespace LemonadeStand
         public void CreateDays()
         {
             int x = UserInterface.GetDays();
-
+            Random rnd = new Random();
             for (int i = 0; i < x; i++)
             {
-                day = new Day();
+                day = new Day(rnd);
                 days.Add(day);
             }
 
             if (day.weather.newForecast == "sunny" || day.weather.newForecast == "cloudy" && day.weather.temperatureOfTheDay > 25)
             {
-                Customer customerOne = new Customer();
+                Customer customerOne = new Customer(rnd);
                 customerList.Add(customerOne);
-                Customer customerTwo = new Customer();
+                Customer customerTwo = new Customer(rnd);
                 customerList.Add(customerTwo);
-                Customer customerThree = new Customer();
+                Customer customerThree = new Customer(rnd);
                 customerList.Add(customerThree);
-                Customer customerFour = new Customer();
+                Customer customerFour = new Customer(rnd);
                 customerList.Add(customerFour);
-                Customer customerFive = new Customer();
+                Customer customerFive = new Customer(rnd);
                 customerList.Add(customerFive);
-                Customer customerSix = new Customer();
+                Customer customerSix = new Customer(rnd);
                 customerList.Add(customerSix);
-                Customer customerSeven = new Customer();
+                Customer customerSeven = new Customer(rnd);
                 customerList.Add(customerSeven);
-                Customer customerEight = new Customer();
+                Customer customerEight = new Customer(rnd);
                 customerList.Add(customerEight);
-                Customer customerNine = new Customer();
+                Customer customerNine = new Customer(rnd);
                 customerList.Add(customerNine);
-                Customer customerTen = new Customer();
+                Customer customerTen = new Customer(rnd);
                 customerList.Add(customerTen);
 
             }
             else if (day.weather.newForecast == "cloudy" || day.weather.newForecast == "sunny" && day.weather.temperatureOfTheDay > 15)
             {
-                Customer customerOne = new Customer();
+                Customer customerOne = new Customer(rnd);
                 customerList.Add(customerOne);
-                Customer customerTwo = new Customer();
+                Customer customerTwo = new Customer(rnd);
                 customerList.Add(customerTwo);
-                Customer customerThree = new Customer();
+                Customer customerThree = new Customer(rnd);
                 customerList.Add(customerThree);
-                Customer customerFour = new Customer();
+                Customer customerFour = new Customer(rnd);
                 customerList.Add(customerFour);
-                Customer customerFive = new Customer();
+                Customer customerFive = new Customer(rnd);
                 customerList.Add(customerFive);
-                Customer customerSix = new Customer();
+                Customer customerSix = new Customer(rnd);
                 customerList.Add(customerSix);
             }
             else if (day.weather.newForecast == "rainy")
             {
-                Customer customerOne = new Customer();
+                Customer customerOne = new Customer(rnd);
                 customerList.Add(customerOne);
-                Customer customerTwo = new Customer();
+                Customer customerTwo = new Customer(rnd);
                 customerList.Add(customerTwo);
-                Customer customerThree = new Customer();
+                Customer customerThree = new Customer(rnd);
                 customerList.Add(customerThree);
             }
 
@@ -164,9 +164,10 @@ namespace LemonadeStand
                 SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
                 DiposeLeftoverLemonade(businessOne);
-                ContinueOrRetire();
-
-                
+                if(i+1 < days.Count)
+                {
+                    ContinueOrRetire();
+                }                             
             }         
         }//end RunGame
         public void DiposeLeftoverLemonade(Business business)

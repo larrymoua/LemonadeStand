@@ -9,15 +9,14 @@ namespace LemonadeStand
     {
         List<string> ChanceOfBuying;
         public string mood;
-        Random rnd;
 
-        public Customer()
+        public Customer(Random rnd)
         {
             ChanceOfBuying = new List<string>() {"sad", "happy", "normal" };
             rnd = new Random();
-            RandomMood();
+            RandomMood(rnd);
         }
-        public void RandomMood()//random a mood for the customer
+        public void RandomMood(Random rnd)//random a mood for the customer
         {
             int randomIdex;
 
