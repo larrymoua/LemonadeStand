@@ -13,7 +13,6 @@ namespace LemonadeStand
         public Customer(Random rnd)
         {
             ChanceOfBuying = new List<string>() {"sad", "happy", "normal" };
-            rnd = new Random();
             RandomMood(rnd);
         }
         public void RandomMood(Random rnd)//random a mood for the customer

@@ -24,9 +24,9 @@ namespace LemonadeStand
         }//end constructor
         public void CreateDays()
         {
-            int x = UserInterface.GetDays();
             Random rnd = new Random();
-            for (int i = 0; i < x; i++)
+            double  amountOfDaysRunBusiness = UserInterface.GetDouble("How many days do you want to run your business ? ");
+            for (int i = 0; i < amountOfDaysRunBusiness; i++)
             {
                 day = new Day(rnd);
                 days.Add(day);
@@ -114,12 +114,12 @@ namespace LemonadeStand
         }
         public void ContinueOrRetire()
         {
-            string UserChoiceRetireOrContinue = UserInterface.OptionsToContinueOrRetire();
-            if(UserChoiceRetireOrContinue == "1")
+            double UserChoiceRetireOrContinue = UserInterface.GetDouble("Would you like to(1)Continue your business or(2)retire");
+            if(UserChoiceRetireOrContinue == 1)
             {
                 return;
             }
-            else if(UserChoiceRetireOrContinue == "2")
+            else if(UserChoiceRetireOrContinue == 2)
             {
                 Environment.Exit(0);
             }
@@ -127,37 +127,37 @@ namespace LemonadeStand
             {
                 Console.WriteLine("INVALID INPUT, TRY AGAIN!");
                 ContinueOrRetire();
-            }
-
-           
-        }
-        public void ChooseBusinessSellPrice()
-        {
-            pricePerCup = UserInterface.ChooseSellPrice();
-
-        }//end ChooseBusinessSellPrice
+            }          
+        }//ContinueOrRetire
         public void SellLemonade()
         {
+            pricePerCup = UserInterface.GetDouble("Please set a price you want to sell each cup of lemonade for.");
+
+            if(pricePerCup > 1)
+            {
+                customerList.RemoveAt(0);
+            }
+
             int happyMoodMuiltiplier = 2;
        
            
-            for(int i = 0; i < customerList.Count; ++i)
+            for(int i = 0; i < customerList.Count; i++)
             {
                 if (customerList[i].mood == "sad")
                 {
-                    return;
+                    
                 }
                 else if (customerList[i].mood == "happy")
                 {
-                    TotalProfit =+ pricePerCup * happyMoodMuiltiplier;
-                    businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
+                    TotalProfit += pricePerCup * happyMoodMuiltiplier;
+                    businessOne.Budget.cash += pricePerCup * happyMoodMuiltiplier;
                 }
                 else if (customerList[i].mood == "normal")
                 {
-                    TotalProfit =+ pricePerCup;
-                    businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
+                    TotalProfit += pricePerCup;
+                    businessOne.Budget.cash += pricePerCup;
                 }
-
+               
             }//end for loop
 
         }
@@ -165,7 +165,7 @@ namespace LemonadeStand
         {
             UserInterface.LetsMakeLemonade();
 
-            double amountOfPitchers = UserInterface.GetDouble("Enter amount of pitchers: ");
+            double amountOfPitchers = UserInterface.GetDouble("Enter amount of pitchers you want to make : ");
             double lemonsPerPitcher = UserInterface.GetDouble("Enter amount of lemons: ");
             double icePerPitcher = UserInterface.GetDouble("Enter amount of ice: ");
             double sugarPerPitcher = UserInterface.GetDouble("Enter amount of sugar: ");
@@ -175,7 +175,7 @@ namespace LemonadeStand
             business.Inventory.UseSugar(sugarPerPitcher, amountOfPitchers);
             business.Inventory.UseIce(icePerPitcher, amountOfPitchers);
 
-            UserInterface.DisplayTasteOfLemonade(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
+            LostCustomerBecauseOfQuality(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
 
         }//end makelemonade
         public void RunGame()
@@ -192,7 +192,6 @@ namespace LemonadeStand
                 PurchaesIngredients(businessOne);
                 UserInterface.DisplayInventory(businessOne);
                 MakeLemonaade(businessOne);
-                ChooseBusinessSellPrice();
                 SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
                 DiposeLeftoverLemonade(businessOne);
@@ -202,6 +201,16 @@ namespace LemonadeStand
                 }                             
             }         
         }//end RunGame
+        public void LostCustomerBecauseOfQuality(double lemons, double sugar, double ice)
+        {
+            double lostCustomer = UserInterface.DisplayTasteOfLemonade(lemons, ice, sugar);
+
+            for(int i = 0; i < lostCustomer; i++)
+            {
+                customerList.RemoveAt(0);
+            }
+           
+        }//end LostCustomerBecauseOfQuality
         public void DiposeLeftoverLemonade(Business business)
         {
             business.Inventory.DisposePitches();

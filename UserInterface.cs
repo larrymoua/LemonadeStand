@@ -60,39 +60,6 @@ namespace LemonadeStand
             return name;
         }//end SetName
 
-        public static double ChooseSellPrice()
-        {
-            double result = 0;
-
-            Console.WriteLine("Please set a price you want to sell each cup of lemonade for.");
-            try
-            {
-                result = Convert.ToDouble(Console.ReadLine());
-            }
-            catch(Exception)
-            {
-                Console.WriteLine("INVALID INPUT, TRY AGAIN.");
-                ChooseSellPrice();
-            }
-          
-            return result;
-        }
-        public static int GetDays()
-        {
-            int result = 0;
-            
-            Console.WriteLine("How many days do you want to run your business?");
-            try
-            {
-                 result = Convert.ToInt16(Console.ReadLine());
-            }
-            catch
-            {
-                Console.WriteLine("INVALID INPUT, TRY AGAIN.");
-                GetDays();
-            }
-            return result; 
-        }
         public static void DisplayStorePricesNBudget(Business business)
         {
 
@@ -110,8 +77,20 @@ namespace LemonadeStand
         }
         public static double GetDouble(string prompt)
         {
+            double result = 0;
+
             Console.WriteLine(prompt);
-            double result = Convert.ToDouble(Console.ReadLine());
+            try
+            {
+               result = Convert.ToDouble(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("INVALID INPUT, TRY AGAIN");
+                return GetDouble(prompt);
+
+            }
+            
             return result;
         }
         public static void DisplayProfits(Business business, double TotalProfits)
@@ -123,24 +102,14 @@ namespace LemonadeStand
             Console.WriteLine($"\nThe forecast today is {day.weather.temperatureOfTheDay} degrees and {day.weather.newForecast}!");
             Console.WriteLine("(Warning weather may effect your sells!)");
         }//end DisplayWeather
-        public static string OptionsToContinueOrRetire()
-        {
-            string result;
-
-            Console.WriteLine("Would you like to (1)Continue your business or (2)retire");
-            result = Console.ReadLine();
-
-            return result;
-            
-        }//end OptionsToContinueOrRetire
-
         public static void LetsMakeLemonade()
         {
             Console.WriteLine("Lets make our lemonade, please enter quanity of each ingredient.");
 
         }
-        public static void DisplayTasteOfLemonade(double lemons, double sugar, double ice)
+        public static double DisplayTasteOfLemonade(double lemons, double sugar, double ice)
         {
+            double lostCustomer = 0;
             int makesSweetlemonade = 3;
             int coldLemonade = 3;
             int wateredDownLemonade = 2;
@@ -149,11 +118,13 @@ namespace LemonadeStand
             {
                 Console.WriteLine($"You added {sugar} sugarcubes to each pitcher of lemonade.");
                 Console.WriteLine("Your lemonade is SWEEET!");
+               
             }
             else 
             {
                 Console.WriteLine($"You added {sugar} sugarcubes to each pitcher of lemonade.");
                 Console.WriteLine("Your lemondade is SOUR!");
+                lostCustomer++;
             }
             if(ice == coldLemonade)
             {
@@ -164,6 +135,7 @@ namespace LemonadeStand
             {
                 Console.WriteLine($"You added {ice} ice cubes to each pitcher of lemonade.");
                 Console.WriteLine("Your lemondade is warm!");
+                lostCustomer++;
             }
             if(lemons == wateredDownLemonade || lemons > wateredDownLemonade)
             {
@@ -174,9 +146,10 @@ namespace LemonadeStand
             {
                 Console.WriteLine($"You added {lemons} lemons to each pitcher of lemonade.");
                 Console.WriteLine("Your lemondade taste WATERED DOWN!");
+                lostCustomer++;
             }
+            return lostCustomer;
 
-            Console.ReadLine();
         }//end Displaying Taste
     }//end class
 }//end NamesSpace

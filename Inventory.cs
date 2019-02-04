@@ -25,15 +25,15 @@ namespace LemonadeStand
         {
             pitchersYouHave = pitchersYouHave - pitchersYouHave;
         }
-        public void UseLemons(double uselemons, double amountofpitchers)
+        public void UseLemons(double uselemons, double amountofpitchers)//uses lemons for each pitcher and removes what you used from your inventory
         {
             lemonsInInventory = (uselemons * amountofpitchers) - lemonsInInventory;
         }
-        public void UseIce(double useice, double amountofpitchers)
+        public void UseIce(double useice, double amountofpitchers)//uses ice for each pitcher and removes what you used from your inventory
         {
             iceInInventory =( useice* amountofpitchers) - iceInInventory;
         }
-        public void UseSugar(double usesugar, double amountofpitchers)
+        public void UseSugar(double usesugar, double amountofpitchers)//uses sugar for each pitcher and removes what you used from your inventory
         {
             sugarInInventory = (usesugar * amountofpitchers )- sugarInInventory;
         }
