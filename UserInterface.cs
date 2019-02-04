@@ -126,6 +126,7 @@ namespace LemonadeStand
         public static void DisplayWeather(Day day)
         {
             Console.WriteLine($"\nThe forecast today is {day.weather.temperatureOfTheDay} degrees and {day.weather.newForecast}!");
+            Console.WriteLine("(Warning weather may effect your sells!)");
         }//end DisplayWeather
     }//end class
 }//end NamesSpace
