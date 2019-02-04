@@ -12,32 +12,30 @@ namespace LemonadeStand
         public double sugarInInventory;
         public double iceInInventory;
 
-        int useAPitcher;
-
         public Inventory()
         {
-            useAPitcher = 1;
+      
         }
-        public void UsePitchers(double usepitcher)//Userinput how many pictchers they want to make
+        public void UsePitchers(double amountofpitchers)//Userinput how many pictchers they want to make
         {
-            pitchersYouHave = pitchersYouHave + useAPitcher;
+            pitchersYouHave = pitchersYouHave + amountofpitchers;
         }
 
         public void DisposePitches()//after day ends left overs are disposed 
         {
             pitchersYouHave = pitchersYouHave - pitchersYouHave;
         }
-        public void UseLemons(double uselemons)
+        public void UseLemons(double uselemons, double amountofpitchers)
         {
-            lemonsInInventory = uselemons - lemonsInInventory;
+            lemonsInInventory = (uselemons * amountofpitchers) - lemonsInInventory;
         }
-        public void UseIce(double useice)
+        public void UseIce(double useice, double amountofpitchers)
         {
-
+            iceInInventory =( useice* amountofpitchers) - iceInInventory;
         }
-        public void UseSugar(double usesugar)
+        public void UseSugar(double usesugar, double amountofpitchers)
         {
-
+            sugarInInventory = (usesugar * amountofpitchers )- sugarInInventory;
         }
     }//end NameSpace
 }//end class

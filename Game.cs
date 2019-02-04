@@ -87,9 +87,9 @@ namespace LemonadeStand
         }
         public void PurchaesIngredients(Business business)
         {
-           double userBuyLemonsQuanity = UserInterface.buyLemons();
-           double userBuySugarQuanity = UserInterface.buySugar();
-           double userBuyIceQuanity = UserInterface.buyIce();
+           double userBuyLemonsQuanity = UserInterface.GetDouble("How many lemons you want to purchase?");
+           double userBuySugarQuanity = UserInterface.GetDouble("How much sugar did you want to purchase?");
+           double userBuyIceQuanity = UserInterface.GetDouble("How much ice did you want to purchase");
 
            double totalPriceOfLemonsBought = userBuyLemonsQuanity * Store.lemonsPrice;
            double totalPriceOfSugarBought = userBuySugarQuanity * Store.sugarPrice;
@@ -159,6 +159,9 @@ namespace LemonadeStand
             double sugarPerPitcher = UserInterface.GetDouble("Enter amount of sugar: ");
 
             business.Inventory.UsePitchers(amountOfPitchers);
+            business.Inventory.UseLemons(lemonsPerPitcher, amountOfPitchers);
+            business.Inventory.UseSugar(sugarPerPitcher, amountOfPitchers);
+            business.Inventory.UseIce(icePerPitcher, amountOfPitchers);
 
         }//end makelemonade
         public void RunGame()
