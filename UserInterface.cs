@@ -25,13 +25,13 @@ namespace LemonadeStand
         static void CoverScreen()
         {
            
-            Console.WriteLine(@" __    _____    __    __   _____   __  __");
-            Console.WriteLine(@"| |    | ___|  |  \  /  | / _ _ \ |  \ | |");
-            Console.WriteLine(@"| |    | L_    |   \/   | | | | | |   \| |");
-            Console.WriteLine(@"| |    | __|   |_|\   |_| | | | | |      |");
-            Console.WriteLine(@"| |___ | |___  | | \_/| | | |_| | | |\   |");
-            Console.WriteLine(@"L_____||_____| |_|    |_|  \____/ |_| \__|");
-            Console.ReadLine();
+            Console.WriteLine(@" __       _____    ___    __    _____   __   __");
+            Console.WriteLine(@"|| |     || ___|  |   \  /  |  / _ _ \ |  \ || |");
+            Console.WriteLine(@"|| |     || L_    ||   \/   | || | | | ||   \| |");
+            Console.WriteLine(@"|| |     || __|   || |\     | || |/| | ||      |");
+            Console.WriteLine(@"|| |____ || |___  || | \_/| | || |_| | || |\   |");
+            Console.WriteLine(@"L L_____|||_____| ||_|   ||_| \_\____/ ||_|\\__|");
+            Thread.Sleep(1000);
 
         }
         static void DisplayRules()
@@ -62,8 +62,19 @@ namespace LemonadeStand
 
         public static double ChooseSellPrice()
         {
+            double result = 0;
+
             Console.WriteLine("Please set a price you want to sell each cup of lemonade for.");
-            double result = Convert.ToDouble(Console.ReadLine());
+            try
+            {
+                result = Convert.ToDouble(Console.ReadLine());
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("INVALID INPUT, TRY AGAIN.");
+                ChooseSellPrice();
+            }
+          
             return result;
         }
         public static int GetDays()
@@ -84,7 +95,7 @@ namespace LemonadeStand
         }
         public static double PurchaseLemonade(Business business)
         {
-            double result;
+            double result = 0;
 
             Console.WriteLine("\nLets Head to the store...");
             Thread.Sleep(1000);
@@ -95,8 +106,16 @@ namespace LemonadeStand
 
             Console.WriteLine("\nHow many pitchers do you want to purchase?");
 
-       
-            result = Convert.ToDouble(Console.ReadLine());
+            try
+            {
+                result = Convert.ToDouble(Console.ReadLine());
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("\nINVALID INPUT, TRY AGAIN.");
+                PurchaseLemonade(business);
+            }
+            
             return result;
 
         }

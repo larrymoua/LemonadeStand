@@ -22,8 +22,7 @@ namespace LemonadeStand
           NewWeather();
 
         }//end Constructor
-        public void NewWeather()
-
+        public void NewWeather()//random and creates a new forcast{rainy, sunny, cloudy} and tempature (0-35)
         {
             int randomWeatherIndex;
             temperatureOfTheDay = rnd.Next( minTemperature, maxTemperature);

@@ -16,10 +16,5 @@ namespace LemonadeStand
 
         }//end constructor
 
-        public void DisplayDay()
-        {
-            throw new System.NotImplementedException();
-        }
-
-    }
-}
+    }//end class
+}//end namespace

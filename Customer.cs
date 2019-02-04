@@ -17,7 +17,7 @@ namespace LemonadeStand
             rnd = new Random();
             RandomMood();
         }
-        public void RandomMood()
+        public void RandomMood()//random a mood for the customer
         {
             int randomIdex;
 

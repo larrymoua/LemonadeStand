@@ -8,19 +8,20 @@ namespace LemonadeStand
     public class Inventory
     {
         public double pitchersYouHave;
+        int useAPitcher;
 
         public Inventory()
         {
-            
+            useAPitcher = 1;
         }
-        public void UsePitches()
+        public void UsePitches()//If 5 cups of lemonade sells, use a pitcher(5 cups in a pitcher)
         {
-            throw new System.NotImplementedException();
+            pitchersYouHave = pitchersYouHave - useAPitcher;
         }
 
-        public void DisposePitches()
+        public void DisposePitches()//after day ends left overs are disposed 
         {
-            throw new System.NotImplementedException();
+            pitchersYouHave = pitchersYouHave - pitchersYouHave;
         }
     }//end NameSpace
 }//end class
