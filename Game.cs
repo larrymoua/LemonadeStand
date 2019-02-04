@@ -103,7 +103,22 @@ namespace LemonadeStand
         }//end PurchaseLemonade
         public void ContinueOrRetire()
         {
-            throw new System.NotImplementedException();
+            string UserChoiceRetireOrContinue = UserInterface.OptionsToContinueOrRetire();
+            if(UserChoiceRetireOrContinue == "1")
+            {
+                return;
+            }
+            else if(UserChoiceRetireOrContinue == "2")
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("INVALID INPUT, TRY AGAIN!");
+                ContinueOrRetire();
+            }
+
+           
         }
         public void ChooseBusinessSellPrice()
         {
@@ -113,6 +128,7 @@ namespace LemonadeStand
         public void SellLemonade()
         {
             int happyMoodMuiltiplier = 2;
+       
            
             for(int i = 0; i < customerList.Count; ++i)
             {
@@ -130,7 +146,7 @@ namespace LemonadeStand
                 }
 
             }//end for loop
-        
+
             businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
         }
         public void RunGame()
@@ -147,8 +163,16 @@ namespace LemonadeStand
                 ChooseBusinessSellPrice();
                 SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
+                DiposeLeftoverLemonade(businessOne);
+                ContinueOrRetire();
+
                 
             }         
         }//end RunGame
+        public void DiposeLeftoverLemonade(Business business)
+        {
+            business.Inventory.DisposePitches();
+        }
+
     }//end class
 }//end namespace

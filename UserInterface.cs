@@ -128,5 +128,15 @@ namespace LemonadeStand
             Console.WriteLine($"\nThe forecast today is {day.weather.temperatureOfTheDay} degrees and {day.weather.newForecast}!");
             Console.WriteLine("(Warning weather may effect your sells!)");
         }//end DisplayWeather
+        public static string OptionsToContinueOrRetire()
+        {
+            string result;
+
+            Console.WriteLine("Would you like to (1)Continue your business or (2)retire");
+            result = Console.ReadLine();
+
+            return result;
+            
+        }//end OptionsToContinueOrRetire
     }//end class
 }//end NamesSpace
