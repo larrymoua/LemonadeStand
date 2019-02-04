@@ -103,6 +103,15 @@ namespace LemonadeStand
 
 
         }//end PurchaesIngredients
+        public void MakeLemonadeOwnRecipe()
+        {
+            UserInterface.LetsMakeLemonade();
+       
+            double lemonsUsedToMakeRecipe = UserInterface.GetDouble("Enter Lemons quanity : ");
+            double sugarUsedToMakeRecipe = UserInterface.GetDouble("Enter Sugar quanity : ");
+            double iceUsedToMakeRecipe = UserInterface.GetDouble("Enter Ice quanity : ");
+
+        }
         public void ContinueOrRetire()
         {
             string UserChoiceRetireOrContinue = UserInterface.OptionsToContinueOrRetire();
@@ -141,18 +150,21 @@ namespace LemonadeStand
                 else if (customerList[i].mood == "happy")
                 {
                     TotalProfit =+ pricePerCup * happyMoodMuiltiplier;
+                    businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
                 }
                 else if (customerList[i].mood == "normal")
                 {
                     TotalProfit =+ pricePerCup;
+                    businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
                 }
 
             }//end for loop
 
-            businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
         }
         public void MakeLemonaade(Business business)
         {
+            UserInterface.LetsMakeLemonade();
+
             double amountOfPitchers = UserInterface.GetDouble("Enter amount of pitchers: ");
             double lemonsPerPitcher = UserInterface.GetDouble("Enter amount of lemons: ");
             double icePerPitcher = UserInterface.GetDouble("Enter amount of ice: ");
@@ -162,6 +174,8 @@ namespace LemonadeStand
             business.Inventory.UseLemons(lemonsPerPitcher, amountOfPitchers);
             business.Inventory.UseSugar(sugarPerPitcher, amountOfPitchers);
             business.Inventory.UseIce(icePerPitcher, amountOfPitchers);
+
+            UserInterface.DisplayTasteOfLemonade(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
 
         }//end makelemonade
         public void RunGame()
@@ -177,6 +191,7 @@ namespace LemonadeStand
                 UserInterface.DisplayStorePricesNBudget(businessOne);
                 PurchaesIngredients(businessOne);
                 UserInterface.DisplayInventory(businessOne);
+                MakeLemonaade(businessOne);
                 ChooseBusinessSellPrice();
                 SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);

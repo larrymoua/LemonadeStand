@@ -133,5 +133,50 @@ namespace LemonadeStand
             return result;
             
         }//end OptionsToContinueOrRetire
+
+        public static void LetsMakeLemonade()
+        {
+            Console.WriteLine("Lets make our lemonade, please enter quanity of each ingredient.");
+
+        }
+        public static void DisplayTasteOfLemonade(double lemons, double sugar, double ice)
+        {
+            int makesSweetlemonade = 3;
+            int coldLemonade = 3;
+            int wateredDownLemonade = 2;
+
+            if(sugar == makesSweetlemonade || sugar > makesSweetlemonade)
+            {
+                Console.WriteLine($"You added {sugar} sugarcubes to each pitcher of lemonade.");
+                Console.WriteLine("Your lemonade is SWEEET!");
+            }
+            else 
+            {
+                Console.WriteLine($"You added {sugar} sugarcubes to each pitcher of lemonade.");
+                Console.WriteLine("Your lemondade is SOUR!");
+            }
+            if(ice == coldLemonade)
+            {
+                Console.WriteLine($"You added {ice} ice cubes to each pitcher of lemonade.");
+                Console.WriteLine("Your lemondade is nice and cold!");
+            }
+            else
+            {
+                Console.WriteLine($"You added {ice} ice cubes to each pitcher of lemonade.");
+                Console.WriteLine("Your lemondade is warm!");
+            }
+            if(lemons == wateredDownLemonade || lemons > wateredDownLemonade)
+            {
+                Console.WriteLine($"You added {lemons} lemons to each pitcher of lemonade.");
+                Console.WriteLine("Your lemondade taste LEMONY!");
+            }
+            else
+            {
+                Console.WriteLine($"You added {lemons} lemons to each pitcher of lemonade.");
+                Console.WriteLine("Your lemondade taste WATERED DOWN!");
+            }
+
+            Console.ReadLine();
+        }//end Displaying Taste
     }//end class
 }//end NamesSpace
