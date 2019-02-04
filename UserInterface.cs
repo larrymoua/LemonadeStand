@@ -99,15 +99,13 @@ namespace LemonadeStand
             Console.WriteLine("\nLets Head to the store...");
             Thread.Sleep(1000);
             Console.WriteLine($"Lemons cost : $ {Store.lemonsPrice} \tSugarCubes cost : $ {Store.sugarPrice} \tIce Cube : $ {Store.icePrice}");
-            Console.WriteLine("\nRecipe(1 pitcher = 5 cups) = Lemons : 3  SugarCubes : 2  Ice Cubes : 5 ");
-
             Console.WriteLine($"\nBusiness Budget : {business.Budget.cash} $");
 
         }
         public static void DisplayInventory(Business business)
         {
             Console.WriteLine($"You have {business.Inventory.pitchersYouHave} pitchers in your inventory..");
-            Console.WriteLine($"Lemons : {business.Inventory.lemonsInInventory} \t Sugar : {business.Inventory.sugarInInventory} \t Ice : {businessOne.Inventory.iceInInventory}");
+            Console.WriteLine($"Lemons : {business.Inventory.lemonsInInventory} \t Sugar : {business.Inventory.sugarInInventory} \t Ice : {business.Inventory.iceInInventory}");
             Console.WriteLine($"Bank Account : $ {business.Budget.cash} ");
         }
         public static double buyLemons()

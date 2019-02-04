@@ -85,16 +85,6 @@ namespace LemonadeStand
         {
             businessOne.Name =  UserInterface.SetName();
         }
-        public void PurchaseLemonade()
-        {
-          double AmountOfPitchersBuying =  UserInterface.DisplayStorePricesNBudget(businessOne);
-          double CostperPitcher = (Store.icePrice * 5) + (Store.lemonsPrice * 3) + (Store.sugarPrice * 2);
-          businessOne.Budget.cash = businessOne.Budget.cash - (CostperPitcher * AmountOfPitchersBuying);
-          businessOne.Inventory.pitchersYouHave = AmountOfPitchersBuying;
-          double cupsOfLemonadeYouHave = (businessOne.Inventory.pitchersYouHave * 5);
-          Console.Clear();
-
-        }//end PurchaseLemonade
         public void PurchaesIngredients(Business business)
         {
            double userBuyLemonsQuanity = UserInterface.buyLemons();
@@ -104,7 +94,12 @@ namespace LemonadeStand
            double totalPriceOfLemonsBought = userBuyLemonsQuanity * Store.lemonsPrice;
            double totalPriceOfSugarBought = userBuySugarQuanity * Store.sugarPrice;
            double totalPriceOfIceBought = userBuyIceQuanity * Store.icePrice;
+
            business.Budget.cash -= totalPriceOfIceBought + totalPriceOfLemonsBought + totalPriceOfSugarBought;
+
+           business.Inventory.iceInInventory = userBuyIceQuanity + business.Inventory.iceInInventory;
+           business.Inventory.lemonsInInventory = userBuyLemonsQuanity + business.Inventory.lemonsInInventory;
+           business.Inventory.sugarInInventory = userBuySugarQuanity + business.Inventory.sugarInInventory;
 
 
         }//end PurchaesIngredients
@@ -166,8 +161,9 @@ namespace LemonadeStand
             {
                 Console.WriteLine($"\n\t\t\t\tDay : {i+1}");
                 UserInterface.DisplayWeather(days[i]);
-                PurchaseLemonade();
+                UserInterface.DisplayStorePricesNBudget(businessOne);
                 PurchaesIngredients(businessOne);
+                UserInterface.DisplayInventory(businessOne);
                 ChooseBusinessSellPrice();
                 SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
