@@ -18,14 +18,26 @@ namespace LemonadeStand
         {
             useAPitcher = 1;
         }
-        public void UsePitches()//If 5 cups of lemonade sells, use a pitcher(5 cups in a pitcher)
+        public void UsePitchers(double usepitcher)//Userinput how many pictchers they want to make
         {
-            pitchersYouHave = pitchersYouHave - useAPitcher;
+            pitchersYouHave = pitchersYouHave + useAPitcher;
         }
 
         public void DisposePitches()//after day ends left overs are disposed 
         {
             pitchersYouHave = pitchersYouHave - pitchersYouHave;
+        }
+        public void UseLemons(double uselemons)
+        {
+            lemonsInInventory = uselemons - lemonsInInventory;
+        }
+        public void UseIce(double useice)
+        {
+
+        }
+        public void UseSugar(double usesugar)
+        {
+
         }
     }//end NameSpace
 }//end class

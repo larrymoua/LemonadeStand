@@ -151,6 +151,16 @@ namespace LemonadeStand
 
             businessOne.Budget.cash = TotalProfit + businessOne.Budget.cash;
         }
+        public void MakeLemonaade(Business business)
+        {
+            double amountOfPitchers = UserInterface.GetDouble("Enter amount of pitchers: ");
+            double lemonsPerPitcher = UserInterface.GetDouble("Enter amount of lemons: ");
+            double icePerPitcher = UserInterface.GetDouble("Enter amount of ice: ");
+            double sugarPerPitcher = UserInterface.GetDouble("Enter amount of sugar: ");
+
+            business.Inventory.UsePitchers(amountOfPitchers);
+
+        }//end makelemonade
         public void RunGame()
         {
             UserInterface.RunUserInterface();

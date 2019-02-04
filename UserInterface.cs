@@ -26,7 +26,7 @@ namespace LemonadeStand
         {
            
             Console.WriteLine(@" __       _____    ___    __    _____   __   __");
-            Console.WriteLine(@"|| |     || ___|  |   \  /  |  / _ _ \ |  \ || |");
+            Console.WriteLine(@"|  |     |  ___|  |   \  /  |  / _ _ \ |  \ || |");
             Console.WriteLine(@"|| |     || L_    ||   \/   | || | | | ||   \| |");
             Console.WriteLine(@"|| |     || __|   || |\     | || |/| | ||      |");
             Console.WriteLine(@"|| |____ || |___  || | \_/| | || |_| | || |\   |");
@@ -108,31 +108,10 @@ namespace LemonadeStand
             Console.WriteLine($"Lemons : {business.Inventory.lemonsInInventory} \t Sugar : {business.Inventory.sugarInInventory} \t Ice : {business.Inventory.iceInInventory}");
             Console.WriteLine($"Bank Account : $ {business.Budget.cash} ");
         }
-        public static double buyLemons()
+        public static double GetDouble(string prompt)
         {
-            double result = 0;
-
-            Console.WriteLine("Enter Lemons : ");
-            result = Convert.ToDouble(Console.ReadLine());
-
-            return result;
-        }
-        public static double buyIce()
-        {
-            double result = 0;
-
-            Console.WriteLine("Enter Sugar : ");
-            result = Convert.ToDouble(Console.ReadLine());
-
-            return result;
-        }
-        public static double buySugar()
-        {
-            double result = 0;
-
-            Console.WriteLine("Enter Ice : ");
-            result = Convert.ToDouble(Console.ReadLine());
-
+            Console.WriteLine(prompt);
+            double result = Convert.ToDouble(Console.ReadLine());
             return result;
         }
         public static void DisplayProfits(Business business, double TotalProfits)
