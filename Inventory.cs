@@ -8,6 +8,10 @@ namespace LemonadeStand
     public class Inventory
     {
         public double pitchersYouHave;
+        public double lemonsInInventory;
+        public double sugarInInventory;
+        public double iceInInventory;
+
         int useAPitcher;
 
         public Inventory()
