@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LemonadeStand
 {
-    public class Customer
+    public class Customer//open and closed SOLID principle , single responsibility
     {
         List<string> ChanceOfBuying;
         public string mood;

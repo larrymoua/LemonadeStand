@@ -114,7 +114,7 @@ namespace LemonadeStand
         }
         public void PurchaesIngredients(Business business)
         {
-           double userBuyLemonsQuanity = UserInterface.GetDouble("How many lemons you want to purchase?");
+           double userBuyLemonsQuanity = UserInterface.GetDouble("\nHow many lemons you want to purchase?");
            double userBuySugarQuanity = UserInterface.GetDouble("How much sugar did you want to purchase?");
            double userBuyIceQuanity = UserInterface.GetDouble("How much ice did you want to purchase");
 
@@ -275,15 +275,16 @@ namespace LemonadeStand
 
             for (int i = 0; i < days.Count; ++i)
             {
+                UserInterface.PredictedForecast(days[i]);
                 Console.WriteLine($"\n\t\t\t\tDay : {i+1}");
                 UserInterface.DisplayWeather(days[i]);
                 UserInterface.DisplayStorePricesNBudget(businessOne);
                 UserInterface.DisplayInventory(businessOne);
                 PurchaesIngredients(businessOne);
-                Console.Clear();
                 UserInterface.DisplayInventory(businessOne);
                 ChooseToMakeLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
+                TotalProfit = 0;
                 DiposeLeftoverLemonade(businessOne);
                 if(businessOne.Budget.cash == 0 && businessOne.Inventory.iceInInventory < 1 && businessOne.Inventory.lemonsInInventory < 1 && businessOne.Inventory.sugarInInventory < 1)
                 {

@@ -70,7 +70,7 @@ namespace LemonadeStand
         }
         public static void DisplayInventory(Business business)
         {
-            Console.WriteLine($"You have {business.Inventory.pitchersYouHave} pitchers in your inventory..");
+            Console.WriteLine($"\nYou have {business.Inventory.pitchersYouHave} pitchers in your inventory..");
             Console.WriteLine($"Lemons : {business.Inventory.lemonsInInventory} \t Sugar : {business.Inventory.sugarInInventory} \t Ice : {business.Inventory.iceInInventory}");
             Console.WriteLine($"Business Bank Account :  $ {business.Budget.cash} ");
         }
@@ -99,9 +99,15 @@ namespace LemonadeStand
         }
         public static void DisplayWeather(Day day)
         {
-            Console.WriteLine($"\nThe forecast today is {day.weather.temperatureOfTheDay} degrees and {day.weather.newForecast}!");
+            Console.WriteLine($"\nThe actual forecast today is {day.weather.temperatureOfTheDay} degrees and {day.weather.newForecast}!");
             Console.WriteLine("(Warning weather may effect your sells!)");
         }//end DisplayWeather
+        public static void PredictedForecast(Day day)
+        {
+            Console.WriteLine($"Predicted forecast tomrrow is {day.weather.temperatureOfTheDay - 2} degrees and {day.weather.newForecast}...");
+            Thread.Sleep(2000);
+
+        }
         public static void LetsMakeLemonade()
         {
             Console.WriteLine("Lets make our lemonade, please enter quanity of each ingredient you want in each pitcher.");

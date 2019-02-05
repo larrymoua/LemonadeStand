@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LemonadeStand
 {
-    public class Store//open and closed SOLID principle //single responsibility
+    public class Store//open and closed SOLID principle , single responsibility
     {
         public static double lemonsPrice;
         public static double sugarPrice;
