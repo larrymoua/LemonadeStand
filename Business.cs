@@ -10,7 +10,6 @@ namespace LemonadeStand
         private static string name;
         public Budget Budget { get; set; }
         public Inventory Inventory { get; set; }
-
         public string Name { get { return name; } set { name = value; } }
 
         public Business()
@@ -19,4 +18,4 @@ namespace LemonadeStand
             Inventory = new Inventory();
         }//end constructor
     }//end class
-}//end namespace
+}

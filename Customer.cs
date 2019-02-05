@@ -7,14 +7,21 @@ namespace LemonadeStand
 {
     public class Customer
     {
-        public Customer()
-        {
-     
-        }
+        List<string> ChanceOfBuying;
+        public string mood;
 
-        public void BuyLemonade()
+        public Customer(Random rnd)
         {
-            
+            ChanceOfBuying = new List<string>() {"sad", "happy", "normal" };
+            RandomMood(rnd);
         }
+        public void RandomMood(Random rnd)//random a mood for the customer
+        {
+            int randomIdex;
+
+            randomIdex = rnd.Next(ChanceOfBuying.Count);
+            mood = ChanceOfBuying[randomIdex];
+
+        }//RandomMood
     }//end class
 }//end namespace
