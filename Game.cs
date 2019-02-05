@@ -61,6 +61,18 @@ namespace LemonadeStand
                 customerList.Add(customerNine);
                 Customer customerTen = new Customer(rnd);
                 customerList.Add(customerTen);
+                Customer customerEleven = new Customer(rnd);
+                customerList.Add(customerEleven);
+                Customer customerTweleve = new Customer(rnd);
+                customerList.Add(customerTweleve);
+                Customer customerThirdteen = new Customer(rnd);
+                customerList.Add(customerThirdteen);
+                Customer customerFourteen = new Customer(rnd);
+                customerList.Add(customerFourteen);
+                Customer customerFifthTeen = new Customer(rnd);
+                customerList.Add(customerFifthTeen);
+                Customer customerSixteen = new Customer(rnd);
+                customerList.Add(customerSixteen);
 
             }
             else if (day.weather.newForecast == "cloudy" || day.weather.newForecast == "sunny" && day.weather.temperatureOfTheDay > 15)
@@ -77,6 +89,14 @@ namespace LemonadeStand
                 customerList.Add(customerFive);
                 Customer customerSix = new Customer(rnd);
                 customerList.Add(customerSix);
+                Customer customerSeven = new Customer(rnd);
+                customerList.Add(customerSeven);
+                Customer customerEight = new Customer(rnd);
+                customerList.Add(customerEight);
+                Customer customerNine = new Customer(rnd);
+                customerList.Add(customerNine);
+                Customer customerTen = new Customer(rnd);
+                customerList.Add(customerTen);
             }
             else if (day.weather.newForecast == "rainy")
             {
@@ -104,7 +124,7 @@ namespace LemonadeStand
 
            double TotalCostOfIngredients = totalPriceOfIceBought + totalPriceOfLemonsBought + totalPriceOfSugarBought;
 
-            if (TotalCostOfIngredients < business.Budget.cash)
+            if (TotalCostOfIngredients < business.Budget.cash || TotalCostOfIngredients == business.Budget.cash)
             {
                 business.Budget.cash -= totalPriceOfIceBought + totalPriceOfLemonsBought + totalPriceOfSugarBought;
                 business.Inventory.iceInInventory = userBuyIceQuanity + business.Inventory.iceInInventory;
@@ -124,10 +144,12 @@ namespace LemonadeStand
             double UserChoiceRetireOrContinue = UserInterface.GetDouble("Would you like to(1)Continue your business or(2)retire");
             if(UserChoiceRetireOrContinue == 1)
             {
-                return;
+                Console.Clear();
             }
             else if(UserChoiceRetireOrContinue == 2)
             {
+                Console.WriteLine("Retiring already? Shanks for playing LEMONADE STAND!");
+                Console.ReadLine();
                 Environment.Exit(0);
             }
             else
@@ -140,16 +162,23 @@ namespace LemonadeStand
         {
             pricePerCup = UserInterface.GetDouble("Please set a price you want to sell each cup of lemonade for.");
 
-            if(pricePerCup > 1)
+            if(pricePerCup > 5)
             {
-                customerList.RemoveAt(0);
+                customerList.RemoveRange(0,15);
+                Console.WriteLine("That seems to expensive, you probably will not get any customers today!");
             }
-            else if ( pricePerCup < 1)
+            else if ( pricePerCup < 1 || pricePerCup == 1)
             {
                 Customer bonusCustomerGoodPrice = new Customer(rnd);
                 customerList.Add(bonusCustomerGoodPrice);
+                Customer bonusCustomerGoodPriceTwo = new Customer(rnd);
+                customerList.Add(bonusCustomerGoodPriceTwo);
+                Console.WriteLine("Great price , you should get more customers!");
             }
-
+            else if(pricePerCup > 1 && pricePerCup < 5)
+            {
+                Console.WriteLine("Thats a fair price!");
+            }
             int happyMoodMuiltiplier = 2;
        
            
@@ -205,8 +234,12 @@ namespace LemonadeStand
             business.Inventory.UseSugar(sugarPerPitcher, amountOfPitchers);
             business.Inventory.UseIce(icePerPitcher, amountOfPitchers);
 
-            LostCustomerBecauseOfQuality(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
-
+            if(amountOfPitchers > 1 || amountOfPitchers == 1)
+            {
+                LostCustomerBecauseOfQuality(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
+                SellLemonade();
+            }
+            
         }//end makelemonade
         public void RunGame()
         {
@@ -219,17 +252,25 @@ namespace LemonadeStand
                 Console.WriteLine($"\n\t\t\t\tDay : {i+1}");
                 UserInterface.DisplayWeather(days[i]);
                 UserInterface.DisplayStorePricesNBudget(businessOne);
+                UserInterface.DisplayInventory(businessOne);
                 PurchaesIngredients(businessOne);
+                Console.Clear();
                 UserInterface.DisplayInventory(businessOne);
                 MakeLemonaade(businessOne);
-                SellLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
                 DiposeLeftoverLemonade(businessOne);
-                if(i+1 < days.Count)
+                if(businessOne.Budget.cash == 0 && businessOne.Inventory.iceInInventory < 1 && businessOne.Inventory.lemonsInInventory < 1 && businessOne.Inventory.sugarInInventory < 1)
+                {
+                    Console.WriteLine("LOOKS LIKE YOU RAN OUT OF INVENTORY AND MONEY. THANKS FOR PLAYING LEMONADE STAND!");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+                }
+                else
                 {
                     ContinueOrRetire();
-                }                             
-            }         
+                }                     
+            }
+            UserInterface.EndGameText();
         }//end RunGame
         public void LostCustomerBecauseOfQuality(double lemons, double sugar, double ice)
         {

@@ -66,18 +66,14 @@ namespace LemonadeStand
         public static void DisplayStorePricesNBudget(Business business)
         {
 
-            Console.WriteLine("\nLets Head to the store...");
-            Thread.Sleep(1000);
+            Console.WriteLine("\n\t\t\tSTORE PRICES");
             Console.WriteLine($"Lemons cost : $ {Store.lemonsPrice} \tSugarCubes cost : $ {Store.sugarPrice} \tIce Cube : $ {Store.icePrice}");
-            Console.WriteLine($"\nBusiness Budget : {business.Budget.cash} $");
-
         }
         public static void DisplayInventory(Business business)
         {
-            Console.Clear();
             Console.WriteLine($"You have {business.Inventory.pitchersYouHave} pitchers in your inventory..");
             Console.WriteLine($"Lemons : {business.Inventory.lemonsInInventory} \t Sugar : {business.Inventory.sugarInInventory} \t Ice : {business.Inventory.iceInInventory}");
-            Console.WriteLine($"Bank Account : $ {business.Budget.cash} ");
+            Console.WriteLine($"Business Bank Account :  $ {business.Budget.cash} ");
         }
         public static double GetDouble(string prompt)
         {
@@ -99,7 +95,7 @@ namespace LemonadeStand
         }
         public static void DisplayProfits(Business business, double TotalProfits)
         {
-            Console.WriteLine($"\n Profit : ${TotalProfits} Business Budget : ${business.Budget.cash}");
+            Console.WriteLine($"\n Profit : ${TotalProfits} Business Bank Account : ${business.Budget.cash}");
             Console.ReadLine();
         }
         public static void DisplayWeather(Day day)
@@ -211,7 +207,8 @@ namespace LemonadeStand
         }//end makelemonade
         public static  void EndGameText()
         {
-            Console.WriteLine("Thanks for playing LEMONADE STAND!");
+            Console.WriteLine("Unfortunitly your time is up, thanks for playing LEMONADE STAND!");
+            Console.ReadLine();
         }
     }//end class
 }//end NamesSpace
