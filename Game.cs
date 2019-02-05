@@ -21,13 +21,18 @@ namespace LemonadeStand
         {
             businessOne = new Business();
             customerList = new List<Customer>();
-            Random rnd = new Random();
+            rnd = new Random();
 
         }//end constructor
         public void CreateDays()
         {
             
-            double  amountOfDaysRunBusiness = UserInterface.GetDouble("How many days do you want to run your business ? ");
+            double amountOfDaysRunBusiness = UserInterface.GetDouble("How many days do you want to run your business ? ");
+            if(amountOfDaysRunBusiness  < 1)
+            {
+                Console.WriteLine("CAN NOT BE 0 OR LESS DAYS!");
+                CreateDays();
+            }
             for (int i = 0; i < amountOfDaysRunBusiness; i++)
             {
                 day = new Day(rnd);
@@ -97,23 +102,23 @@ namespace LemonadeStand
            double totalPriceOfSugarBought = userBuySugarQuanity * Store.sugarPrice;
            double totalPriceOfIceBought = userBuyIceQuanity * Store.icePrice;
 
-           business.Budget.cash -= totalPriceOfIceBought + totalPriceOfLemonsBought + totalPriceOfSugarBought;
+           double TotalCostOfIngredients = totalPriceOfIceBought + totalPriceOfLemonsBought + totalPriceOfSugarBought;
 
-           business.Inventory.iceInInventory = userBuyIceQuanity + business.Inventory.iceInInventory;
-           business.Inventory.lemonsInInventory = userBuyLemonsQuanity + business.Inventory.lemonsInInventory;
-           business.Inventory.sugarInInventory = userBuySugarQuanity + business.Inventory.sugarInInventory;
+            if (TotalCostOfIngredients < business.Budget.cash)
+            {
+                business.Budget.cash -= totalPriceOfIceBought + totalPriceOfLemonsBought + totalPriceOfSugarBought;
+                business.Inventory.iceInInventory = userBuyIceQuanity + business.Inventory.iceInInventory;
+                business.Inventory.lemonsInInventory = userBuyLemonsQuanity + business.Inventory.lemonsInInventory;
+                business.Inventory.sugarInInventory = userBuySugarQuanity + business.Inventory.sugarInInventory;
 
+            }
+            else
+            {
+                Console.WriteLine("\nYou dont have enough money to buy all this stuff!");
+                PurchaesIngredients(business);
+            }
 
         }//end PurchaesIngredients
-        public void MakeLemonadeOwnRecipe()
-        {
-            UserInterface.LetsMakeLemonade();
-       
-            double lemonsUsedToMakeRecipe = UserInterface.GetDouble("Enter Lemons quanity : ");
-            double sugarUsedToMakeRecipe = UserInterface.GetDouble("Enter Sugar quanity : ");
-            double iceUsedToMakeRecipe = UserInterface.GetDouble("Enter Ice quanity : ");
-
-        }
         public void ContinueOrRetire()
         {
             double UserChoiceRetireOrContinue = UserInterface.GetDouble("Would you like to(1)Continue your business or(2)retire");
@@ -172,11 +177,29 @@ namespace LemonadeStand
         {
             UserInterface.LetsMakeLemonade();
 
+           
+            double lemonsPerPitcher = UserInterface.MakeLemonade("lemons", business);
+            double sugarPerPitcher = UserInterface.MakeLemonade("sugar", business);
+            double icePerPitcher = UserInterface.MakeLemonade("ice", business);
             double amountOfPitchers = UserInterface.GetDouble("Enter amount of pitchers you want to make : ");
-            double lemonsPerPitcher = UserInterface.GetDouble("Enter amount of lemons: ");
-            double icePerPitcher = UserInterface.GetDouble("Enter amount of ice: ");
-            double sugarPerPitcher = UserInterface.GetDouble("Enter amount of sugar: ");
-
+            if (amountOfPitchers*lemonsPerPitcher > business.Inventory.lemonsInInventory)
+            {
+                Console.WriteLine("You do not have enough lemons to make that many pitchers!");
+                Console.WriteLine("Lets try again!");
+                MakeLemonaade(business);
+            }
+            else if(amountOfPitchers*sugarPerPitcher > business.Inventory.sugarInInventory)
+            {
+                Console.WriteLine("You do not have enough sugar to make that many pitchers!");
+                Console.WriteLine("Lets try again!");
+                MakeLemonaade(business);
+            }
+            else if(amountOfPitchers * icePerPitcher > business.Inventory.iceInInventory)
+            {
+                Console.WriteLine("You do not have enough ice to make that many pitchers!");
+                Console.WriteLine("Lets try again!");
+                MakeLemonaade(business);
+            }
             business.Inventory.UsePitchers(amountOfPitchers);
             business.Inventory.UseLemons(lemonsPerPitcher, amountOfPitchers);
             business.Inventory.UseSugar(sugarPerPitcher, amountOfPitchers);

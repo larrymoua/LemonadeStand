@@ -27,6 +27,7 @@ namespace LemonadeStand
         }
         public void UseLemons(double uselemons, double amountofpitchers)//uses lemons for each pitcher and removes what you used from your inventory
         {
+           
             lemonsInInventory = (uselemons * amountofpitchers) - lemonsInInventory;
         }
         public void UseIce(double useice, double amountofpitchers)//uses ice for each pitcher and removes what you used from your inventory
