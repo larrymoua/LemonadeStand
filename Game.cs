@@ -224,39 +224,36 @@ namespace LemonadeStand
         {
             UserInterface.LetsMakeLemonade();
 
-           
-            double lemonsPerPitcher = UserInterface.MakeLemonade("lemons", business);       
+            double lemonsPerPitcher = UserInterface.MakeLemonade("lemons", business);
             double sugarPerPitcher = UserInterface.MakeLemonade("sugar", business);
             double icePerPitcher = UserInterface.MakeLemonade("ice", business);
             double amountOfPitchers = UserInterface.GetDouble("Enter amount of pitchers you want to make : ");
-
-            if (amountOfPitchers*lemonsPerPitcher > business.Inventory.lemonsInInventory || lemonsPerPitcher > business.Inventory.lemonsInInventory)
+            if (amountOfPitchers*lemonsPerPitcher > business.Inventory.lemonsInInventory)
             {
                 Console.WriteLine("You do not have enough lemons to make that many pitchers!");
                 Console.WriteLine("Lets try again!");
-                lemonsPerPitcher = 0;
                 MakeLemonaade(business);
             }
-            if(amountOfPitchers*sugarPerPitcher > business.Inventory.sugarInInventory || sugarPerPitcher > business.Inventory.sugarInInventory)
+            else if(amountOfPitchers*sugarPerPitcher > business.Inventory.sugarInInventory)
             {
                 Console.WriteLine("You do not have enough sugar to make that many pitchers!");
                 Console.WriteLine("Lets try again!");
-                sugarPerPitcher = 0;
                 MakeLemonaade(business);
             }
-            if(amountOfPitchers * icePerPitcher > business.Inventory.iceInInventory || icePerPitcher > business.Inventory.iceInInventory)
+            else if(amountOfPitchers * icePerPitcher > business.Inventory.iceInInventory)
             {
                 Console.WriteLine("You do not have enough ice to make that many pitchers!");
                 Console.WriteLine("Lets try again!");
-                icePerPitcher = 0;
                 MakeLemonaade(business);
             }
+
             business.Inventory.UsePitchers(amountOfPitchers);
             business.Inventory.UseLemons(lemonsPerPitcher, amountOfPitchers);
             business.Inventory.UseSugar(sugarPerPitcher, amountOfPitchers);
             business.Inventory.UseIce(icePerPitcher, amountOfPitchers);
 
             if (amountOfPitchers > 0 && (icePerPitcher > 1 || lemonsPerPitcher > 1 || sugarPerPitcher > 1))
+
             {
                 LostCustomerBecauseOfQuality(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
                 SellLemonade();
