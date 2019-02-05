@@ -127,7 +127,7 @@ namespace LemonadeStand
                 tasteResult += ",sour";
                 lostCustomer++;
             }
-            if(ice == coldLemonade)
+            if(ice == coldLemonade || ice > coldLemonade)
             {
                 Console.WriteLine($"You added {ice} ice cubes to each pitcher of lemonade.");
                 tasteResult += ",nice and cold";
