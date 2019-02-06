@@ -43,8 +43,11 @@ namespace LemonadeStand
                 day = new Day(rnd);
                 days.Add(day);
             }
-
-            if (day.weather.newForecast == "sunny" || day.weather.newForecast == "cloudy" && day.weather.temperatureOfTheDay > 25)
+           
+        }
+        public void GenerateCustomerByWeather(Day day)
+        {
+            if ((day.weather.newForecast == "sunny" || day.weather.newForecast == "cloudy") && day.weather.temperatureOfTheDay > 25)
             {
                 Customer customerOne = new Customer(rnd);
                 customerList.Add(customerOne);
@@ -80,7 +83,7 @@ namespace LemonadeStand
                 customerList.Add(customerSixteen);
 
             }
-            else if (day.weather.newForecast == "cloudy" || day.weather.newForecast == "sunny" && day.weather.temperatureOfTheDay > 15)
+            else if ((day.weather.newForecast == "cloudy" || day.weather.newForecast == "sunny") && day.weather.temperatureOfTheDay > 10)
             {
                 Customer customerOne = new Customer(rnd);
                 customerList.Add(customerOne);
@@ -103,7 +106,7 @@ namespace LemonadeStand
                 Customer customerTen = new Customer(rnd);
                 customerList.Add(customerTen);
             }
-            else if (day.weather.newForecast == "rainy")
+            else
             {
                 Customer customerOne = new Customer(rnd);
                 customerList.Add(customerOne);
@@ -201,10 +204,11 @@ namespace LemonadeStand
                     {
                         TotalProfit += pricePerCup * happyMoodMuiltiplier;
                         businessOne.Budget.cash += pricePerCup * happyMoodMuiltiplier;
+                        cupsOfLemonade -= 1;
                     }
                     else
                     {
-                        Console.WriteLine("You ran out of lemonade!");
+                        Console.WriteLine("You ran out of lemonade today, make sure to make enough tomorrow!");
                         break;
                     }
                 }
@@ -214,10 +218,11 @@ namespace LemonadeStand
                     {
                         TotalProfit += pricePerCup;
                         businessOne.Budget.cash += pricePerCup;
+                        cupsOfLemonade -= 1;
                     }
                     else
                     {
-                        Console.WriteLine("You ran out of lemonade!");
+                        Console.WriteLine("You ran out of lemonade today, make sure to make enough tomrrow!");
                         break;
                     }
                 }           
@@ -274,7 +279,7 @@ namespace LemonadeStand
             business.Inventory.UseSugar(sugarPerPitcher, amountOfPitchers);
             business.Inventory.UseIce(icePerPitcher, amountOfPitchers);
 
-            if (amountOfPitchers > 0 && (icePerPitcher > 1 || lemonsPerPitcher > 1 || sugarPerPitcher > 1))
+            if (amountOfPitchers > 0 && (icePerPitcher > 0 || lemonsPerPitcher > 0 || sugarPerPitcher > 0))
 
             {
                 LostCustomerBecauseOfQuality(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
@@ -297,8 +302,10 @@ namespace LemonadeStand
 
             for (int i = 0; i < days.Count; ++i)
             {
+                
                 UserInterface.PredictedForecast(days[i]);
                 Console.WriteLine($"\n\t\t\t\tDay : {i+1}");
+                GenerateCustomerByWeather(days[i]);
                 UserInterface.DisplayWeather(days[i]);
                 UserInterface.DisplayStorePricesNBudget(businessOne);
                 UserInterface.DisplayInventory(businessOne);
