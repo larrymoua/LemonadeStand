@@ -18,25 +18,25 @@ namespace LemonadeStand
         }
         static void Background()
         {
-          Console.ForegroundColor = ConsoleColor.Yellow;
-
+          Console.ForegroundColor = ConsoleColor.DarkYellow;
+          Console.BackgroundColor = ConsoleColor.Black;
         }
 
         static void CoverScreen()
         {
            
-            Console.WriteLine(@" __       _____    ___    __    _____   __   __");
-            Console.WriteLine(@"|  |     |  ___|  |   \  /  |  / _ _ \ |  \ || |");
-            Console.WriteLine(@"|| |     || L_    ||   \/   | || | | | ||   \| |");
-            Console.WriteLine(@"|| |     || __|   || |\     | || |/| | ||      |");
-            Console.WriteLine(@"|| |____ || |___  || | \_/| | || |_| | || |\   |");
-            Console.WriteLine(@"L L_____|||_____| ||_|   ||_| \_\____/ ||_|\\__|");
+            Console.WriteLine(@"  ___      ______   ____    ___   ______  ___   __      _____       ______     _________      ");
+            Console.WriteLine(@" |  |     |  ___|  |   \  /   |  / _ _  \ |  \ || |    /  _  \     |   _  \   |   ______|");
+            Console.WriteLine(@" || |     || L_    ||   \/    | || | |  | ||   \| |   // / \  \    || | \  \  || L___      ");
+            Console.WriteLine(@" || |     || __|   || |\      | || |/|  | ||      |  // ____   \   || |  )  \ ||  ___|   ");
+            Console.WriteLine(@" || |____ || |___  || | \_/|  | || |_|  | || |\   | // /    \\  \  || |_/   / || |____   ");
+            Console.WriteLine(@"//_____/ //______| //_|    ||_| \_\_____/ //_|\\__|//_/      \\__\ //______/ //_______|          ");
             Thread.Sleep(1000);
 
         }
         static void DisplayRules()
         {
-            Console.WriteLine("\t\t\t\t\tLemonade Stand Rules");
+            Console.WriteLine("\n\n\t\t\t\t\tLemonade Stand Rules");
             Console.WriteLine("\nRun a lemonade stand for as many days you want and remember weather could affective your business.");
             Console.WriteLine("YOUR LEMONADE WILL NOT BE GOOD AFTER 1 DAY, IT WILL BE DISPOSED.");
             Console.WriteLine("You will have a bank account of 10 $ to purchase pitchers(5 cups) of lemonade to sell. Also you will have the");
@@ -71,7 +71,9 @@ namespace LemonadeStand
         }
         public static void DisplayInventory(Business business)
         {
-            Console.WriteLine($"\nYou have {business.Inventory.pitchersYouHave} pitchers in your inventory..");
+            double cupsPerpitcher = 5;
+           cupsPerpitcher = business.Inventory.pitchersYouHave* cupsPerpitcher;
+            Console.WriteLine($"\nYou have {business.Inventory.pitchersYouHave} ({cupsPerpitcher} cups)pitchers in your inventory..");
             Console.WriteLine($"Lemons : {business.Inventory.lemonsInInventory} \t Sugar : {business.Inventory.sugarInInventory} \t Ice : {business.Inventory.iceInInventory}");
             Console.WriteLine($"Business Bank Account :  $ {business.Budget.cash} ");
         }
@@ -95,7 +97,9 @@ namespace LemonadeStand
         }
         public static void DisplayProfits(Business business, double TotalProfits)
         {
-            Console.WriteLine($"\n Profit : ${TotalProfits} Business Bank Account : ${business.Budget.cash}");
+            Console.WriteLine("Day rolls by....");
+            Thread.Sleep(2000);
+            Console.WriteLine($"\nToday's Profit : ${TotalProfits} Business Bank Account : ${business.Budget.cash}");
             Console.ReadLine();
         }
         public static void DisplayWeather(Day day)
@@ -120,8 +124,8 @@ namespace LemonadeStand
             int makesSweetlemonade = 3;
             int coldLemonade = 3;
             int wateredDownLemonade = 2;
-            Console.Clear();
             string tasteResult = "Your lemonade is";
+
             if(sugar == makesSweetlemonade || sugar > makesSweetlemonade)
             {
                 Console.WriteLine($"You added {sugar} sugarcubes to each pitcher of lemonade.");
@@ -160,11 +164,11 @@ namespace LemonadeStand
             return lostCustomer;
 
         }//end Displaying Taste
-        public static string MakeLemonadeOrNot()
+        public static string GetString(string prompt)
         {
             string result = "";
 
-            Console.WriteLine("Did you want to make lemonade today? y/n");
+            Console.WriteLine(prompt);
             try
             {
                 result = Console.ReadLine();
@@ -172,7 +176,7 @@ namespace LemonadeStand
             catch(Exception)
             {
                 Console.WriteLine("INVALID INPUT");
-                MakeLemonadeOrNot();
+                GetString(prompt);
             }
             return result;
         }

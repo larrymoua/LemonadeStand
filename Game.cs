@@ -233,7 +233,7 @@ namespace LemonadeStand
         }
         public void ChooseToMakeLemonade()
         {
-           string userInput = UserInterface.MakeLemonadeOrNot();
+           string userInput = UserInterface.GetString("Did you want to make lemonade today? y/n");
 
             if (userInput == "y")
             {
@@ -247,6 +247,34 @@ namespace LemonadeStand
             {
                 Console.WriteLine("INVALID INPUT!");
                 ChooseToMakeLemonade();
+            }
+        }
+        public void ChooseToMakePurchase()
+        {
+            string userInput = UserInterface.GetString("Did you want to make a purchase today? y/n");
+
+            if (userInput == "y")
+            {
+                PurchaesIngredients(businessOne);
+                UserInterface.DisplayInventory(businessOne);
+                ChooseToMakeLemonade();
+            }
+            else if (userInput == "n")
+            {
+                if(businessOne.Inventory.iceInInventory+businessOne.Inventory.lemonsInInventory+businessOne.Inventory.sugarInInventory < 1)
+                {
+                    Console.WriteLine("YOU CANT MAKE ANY LEMONADE WITHOUT ANY INGREDIENTS!");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    ChooseToMakeLemonade();
+                }
+            }
+            else
+            {
+                Console.WriteLine("INVALID INPUT!");
+                ChooseToMakePurchase();
             }
         }
         public void MakeLemonaade(Business business)
@@ -284,7 +312,9 @@ namespace LemonadeStand
             if (amountOfPitchers > 0 && (icePerPitcher > 0 || lemonsPerPitcher > 0 || sugarPerPitcher > 0))
 
             {
+                Console.Clear();
                 LostCustomerBecauseOfQuality(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
+                UserInterface.DisplayInventory(businessOne);
                 SellLemonade(amountOfPitchers);
             }
             else
@@ -311,17 +341,17 @@ namespace LemonadeStand
                 UserInterface.DisplayWeather(days[i]);
                 UserInterface.DisplayStorePricesNBudget(businessOne);
                 UserInterface.DisplayInventory(businessOne);
-                PurchaesIngredients(businessOne);
+                ChooseToMakePurchase();
+                DiposeLeftoverLemonade(businessOne);
                 UserInterface.DisplayInventory(businessOne);
-                ChooseToMakeLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
                 TotalProfit = zeroOutNewDay;
-                DiposeLeftoverLemonade(businessOne);
                 if(businessOne.Budget.cash == 0 && businessOne.Inventory.iceInInventory < 1 && businessOne.Inventory.lemonsInInventory < 1 && businessOne.Inventory.sugarInInventory < 1)
                 {
                     Console.WriteLine("LOOKS LIKE YOU RAN OUT OF INVENTORY AND MONEY. THANKS FOR PLAYING LEMONADE STAND!");
                     Console.ReadLine();
                     Environment.Exit(0);
+
                 }
                 else if ((i+1) == days.Count)
                 {

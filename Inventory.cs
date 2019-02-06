@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LemonadeStand
 {
-    public class Inventory
+    public class Inventory//one responsibility
     {
         public double pitchersYouHave;
         public double lemonsInInventory;
