@@ -317,6 +317,7 @@ namespace LemonadeStand
                 else
                 {
                     ContinueOrRetire();
+                    customerList.Clear();
                 }                     
             }
             UserInterface.EndGameText();
