@@ -38,7 +38,8 @@ namespace LemonadeStand
         {
             Console.WriteLine("\t\t\t\t\tLemonade Stand Rules");
             Console.WriteLine("\nRun a lemonade stand for as many days you want and remember weather could affective your business.");
-            Console.WriteLine("You will have a budget of 10 $ to purchase pitchers(5 cups) of lemonade to sell. Also you will have the");
+            Console.WriteLine("YOUR LEMONADE WILL NOT BE GOOD AFTER 1 DAY, IT WILL BE DISPOSED.");
+            Console.WriteLine("You will have a bank account of 10 $ to purchase pitchers(5 cups) of lemonade to sell. Also you will have the");
             Console.WriteLine("option of selling cups of lemonade for your own price. Goodluck and lets come out with a profit!");
             Console.WriteLine("\n\n Press enter to continue...");
             Console.ReadLine();

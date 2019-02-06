@@ -15,10 +15,15 @@ namespace LemonadeStand
         public List<Day> days = new List<Day>();
         public List<Customer> customerList { get; set; }
         double TotalProfit;
+        double zeroOutNewDay;
+        double cupsOfLemonade;
         Random rnd;
+
 
         public Game()
         {
+            cupsOfLemonade = 5;
+            zeroOutNewDay = 0;
             businessOne = new Business();
             customerList = new List<Customer>();
             rnd = new Random();
@@ -158,8 +163,10 @@ namespace LemonadeStand
                 ContinueOrRetire();
             }          
         }//ContinueOrRetire
-        public void SellLemonade()
+        public void SellLemonade(double amountOfPitchers)
         {
+            cupsOfLemonade = amountOfPitchers * cupsOfLemonade;
+
             pricePerCup = UserInterface.GetDouble("Please set a price you want to sell each cup of lemonade for.");
 
             if(pricePerCup > 5)
@@ -190,15 +197,30 @@ namespace LemonadeStand
                 }
                 else if (customerList[i].mood == "happy")
                 {
-                    TotalProfit += pricePerCup * happyMoodMuiltiplier;
-                    businessOne.Budget.cash += pricePerCup * happyMoodMuiltiplier;
+                    if(cupsOfLemonade > 0)
+                    {
+                        TotalProfit += pricePerCup * happyMoodMuiltiplier;
+                        businessOne.Budget.cash += pricePerCup * happyMoodMuiltiplier;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You ran out of lemonade!");
+                        break;
+                    }
                 }
                 else if (customerList[i].mood == "normal")
                 {
-                    TotalProfit += pricePerCup;
-                    businessOne.Budget.cash += pricePerCup;
-                }
-               
+                    if(cupsOfLemonade > 0)
+                    {
+                        TotalProfit += pricePerCup;
+                        businessOne.Budget.cash += pricePerCup;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You ran out of lemonade!");
+                        break;
+                    }
+                }           
             }//end for loop
 
         }
@@ -256,7 +278,7 @@ namespace LemonadeStand
 
             {
                 LostCustomerBecauseOfQuality(lemonsPerPitcher, sugarPerPitcher, icePerPitcher);
-                SellLemonade();
+                SellLemonade(amountOfPitchers);
             }
             else
             {
@@ -284,7 +306,7 @@ namespace LemonadeStand
                 UserInterface.DisplayInventory(businessOne);
                 ChooseToMakeLemonade();
                 UserInterface.DisplayProfits(businessOne,TotalProfit);
-                TotalProfit = 0;
+                TotalProfit = zeroOutNewDay;
                 DiposeLeftoverLemonade(businessOne);
                 if(businessOne.Budget.cash == 0 && businessOne.Inventory.iceInInventory < 1 && businessOne.Inventory.lemonsInInventory < 1 && businessOne.Inventory.sugarInInventory < 1)
                 {
