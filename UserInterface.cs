@@ -95,11 +95,12 @@ namespace LemonadeStand
             
             return result;
         }
-        public static void DisplayProfits(Business business, double TotalProfits)
+        public static void DisplayProfits(Business business, double TotalProfits, double runningTotal)
         {
             Console.WriteLine("Day rolls by....");
             Thread.Sleep(2000);
             Console.WriteLine($"\nToday's Profit : ${TotalProfits} Business Bank Account : ${business.Budget.cash}");
+            Console.WriteLine($"Overall Profits (start amount $10) : ${runningTotal}");
             Console.ReadLine();
         }
         public static void DisplayWeather(Day day)

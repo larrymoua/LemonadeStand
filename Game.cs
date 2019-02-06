@@ -18,6 +18,7 @@ namespace LemonadeStand
         double zeroOutNewDay;
         double cupsPerLemonade;
         double cupsOfLemonade;
+        double runningTotal;
         Random rnd;
 
 
@@ -221,6 +222,7 @@ namespace LemonadeStand
                         TotalProfit += pricePerCup;
                         businessOne.Budget.cash += pricePerCup;
                         cupsOfLemonade -= 1;
+                
                     }
                     else
                     {
@@ -344,7 +346,8 @@ namespace LemonadeStand
                 ChooseToMakePurchase();
                 DiposeLeftoverLemonade(businessOne);
                 UserInterface.DisplayInventory(businessOne);
-                UserInterface.DisplayProfits(businessOne,TotalProfit);
+                runningTotal =+ businessOne.Budget.cash  - 10 ;
+                UserInterface.DisplayProfits(businessOne, TotalProfit, runningTotal);
                 TotalProfit = zeroOutNewDay;
                 if(businessOne.Budget.cash == 0 && businessOne.Inventory.iceInInventory < 1 && businessOne.Inventory.lemonsInInventory < 1 && businessOne.Inventory.sugarInInventory < 1)
                 {
