@@ -16,13 +16,15 @@ namespace LemonadeStand
         public List<Customer> customerList { get; set; }
         double TotalProfit;
         double zeroOutNewDay;
+        double cupsPerLemonade;
         double cupsOfLemonade;
         Random rnd;
 
 
         public Game()
         {
-            cupsOfLemonade = 5;
+            cupsPerLemonade = 5;
+            cupsOfLemonade = 0;
             zeroOutNewDay = 0;
             businessOne = new Business();
             customerList = new List<Customer>();
@@ -168,7 +170,7 @@ namespace LemonadeStand
         }//ContinueOrRetire
         public void SellLemonade(double amountOfPitchers)
         {
-            cupsOfLemonade = amountOfPitchers * cupsOfLemonade;
+            cupsOfLemonade = amountOfPitchers * cupsPerLemonade;
 
             pricePerCup = UserInterface.GetDouble("Please set a price you want to sell each cup of lemonade for.");
 
@@ -321,13 +323,16 @@ namespace LemonadeStand
                     Console.ReadLine();
                     Environment.Exit(0);
                 }
+                else if ((i+1) == days.Count)
+                {
+                    UserInterface.EndGameText();
+                }
                 else
                 {
                     ContinueOrRetire();
                     customerList.Clear();
                 }                     
             }
-            UserInterface.EndGameText();
         }//end RunGame
         public void LostCustomerBecauseOfQuality(double lemons, double sugar, double ice)
         {
